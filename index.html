@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8"/>
+	<title>AngularJS</title>
+	<script src="angular.min.js"></script>
+	<script>
+	var CtrlDemo = function(){
+		alert("Hello");
+	}
+	</script>
+</head>
+<body ng-init="name='world'" ng-controller="CtrlDemo">
+	<input type="checkbox" ng-model="ShowCheck"/>
+	<div ng-show="ShowCheck">Hello, {{name}}! </div>
+</body>
+</html>
