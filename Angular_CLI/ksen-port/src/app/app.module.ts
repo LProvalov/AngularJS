@@ -6,21 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ArtWorkDetailComponent } from './art-work-detail/art-work-detail.component';
-import { ArtworkComponent } from './artwork/artwork.component';
+import { ArtworksComponent } from './artworks/artworks.component';
+import { ArtworkService } from './artwork.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ArtWorkDetailComponent,
-    ArtworkComponent
+    ArtworksComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ ArtworkService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

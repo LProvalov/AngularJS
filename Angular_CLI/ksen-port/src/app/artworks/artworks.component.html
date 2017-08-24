@@ -1,0 +1,8 @@
+<div>
+  <div class="artworks">
+    <div *ngIf="!isArtworksFilled()">Loading artworks...</div>
+    <div *ngFor="let artwork of artworks">
+      <a [routerLink]="['/artworks', artwork.id]" class="col-1-4">{{artwork.title}}</a>
+    </div>
+  </div>
+</div>

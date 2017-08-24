@@ -4,11 +4,10 @@ import { ArtworkService } from './../artwork.service';
 
 @Component({
   selector: 'app-artwork',
-  templateUrl: './artwork.component.html',
-  styleUrls: ['./artwork.component.css'],
-  providers: [ ArtworkService ]
+  templateUrl: './artworks.component.html',
+  styleUrls: ['./artworks.component.css']
 })
-export class ArtworkComponent implements OnInit {
+export class ArtworksComponent implements OnInit {
 
   constructor(private artworkService: ArtworkService) { }
 
