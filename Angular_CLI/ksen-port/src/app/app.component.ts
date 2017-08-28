@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ArtWork } from './models/allmodels';
-import { ArtworkService } from './artwork.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +8,11 @@ import { ArtworkService } from './artwork.service';
 
 export class AppComponent implements OnInit{
 
+  title: string = 'KsenPort';
+  
   constructor(){
-
   }
 
   ngOnInit(): void {
-
   }  
 }

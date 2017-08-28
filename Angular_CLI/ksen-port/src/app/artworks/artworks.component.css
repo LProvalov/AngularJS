@@ -46,3 +46,12 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
 }
+
+.img-preview {
+    min-height: 250px;
+    min-width: 250px;
+}
+
+.img-block {
+    margin: 0 0 10px 0;
+}

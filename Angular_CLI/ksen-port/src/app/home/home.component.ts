@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtworkService } from './../artwork.service';
 import { ArtWork } from './../models/allmodels';
-
+import { LoadingNotifycationService } from './../loading-notifycation.service';
 
 @Component({
   selector: 'app-home',
@@ -10,18 +10,22 @@ import { ArtWork } from './../models/allmodels';
 })
 export class HomeComponent implements OnInit {
 
-  title: string = 'KsenPort';
   artworks: ArtWork[] = [];
 
-  constructor( private artworkService: ArtworkService ) { }
+  constructor( 
+    private artworkService: ArtworkService,
+    private loadingNotifycationService: LoadingNotifycationService 
+  ) { }
 
   ngOnInit() {
     this.getPartOfArtworks();
   }
 
   getPartOfArtworks(): void {
+    this.loadingNotifycationService.turnMessageShown("Loading home...");
     this.artworkService.getArtworksAsync().then(artworks => {
       this.artworks = artworks.slice(1, 5);
+      this.loadingNotifycationService.turnMessageShown("");
     });
   }
 

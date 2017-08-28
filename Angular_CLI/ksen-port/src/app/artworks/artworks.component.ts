@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtWork } from './../models/allmodels';
 import { ArtworkService } from './../artwork.service';
+import { LoadingNotifycationService } from './../loading-notifycation.service';
 
 @Component({
   selector: 'app-artwork',
@@ -9,7 +10,10 @@ import { ArtworkService } from './../artwork.service';
 })
 export class ArtworksComponent implements OnInit {
 
-  constructor(private artworkService: ArtworkService) { }
+  constructor(
+    private artworkService: ArtworkService,
+    private loadingNotifycationeService: LoadingNotifycationService
+  ) { }
 
   ngOnInit(): void {
     this.getArtworks();
@@ -26,8 +30,10 @@ export class ArtworksComponent implements OnInit {
   }
 
   getArtworks(): void {
+    this.loadingNotifycationeService.turnMessageShown("Loading artworks...");
     this.artworkService.getArtworksAsync().then(artworks => {
       this.artworks = artworks;
+      this.loadingNotifycationeService.turnMessageShown("");
     });
   }
 
