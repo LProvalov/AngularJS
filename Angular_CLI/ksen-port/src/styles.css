@@ -3,3 +3,8 @@
 body {
     background-color: #313131;
 }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}

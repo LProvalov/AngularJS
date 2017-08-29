@@ -7,10 +7,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 scrollbar">
       <div class="row">
-        <div *ngFor="let artwork of artworks">
-          <div class="col-md-4 text-center img-block">
+        <div *ngFor="let artwork of artworks" class="col-md-4">
+          <div class=" text-center img-block">
             <a [routerLink]="['/artworks', artwork.id]">
               <img class="img-preview img-thumbnail"/>
               <br/>
