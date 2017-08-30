@@ -12,6 +12,7 @@ import { NavigationService } from './navigation.service';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { LoadingNotifycationComponent } from './loading-notifycation/loading-notifycation.component';
 import {  LoadingNotifycationService } from './loading-notifycation.service';
+import { BootstrapSliderComponent } from './bootstrap-slider/bootstrap-slider.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {  LoadingNotifycationService } from './loading-notifycation.service';
     ArtWorkDetailComponent,
     ArtworksComponent,
     NavigationMenuComponent,
-    LoadingNotifycationComponent
+    LoadingNotifycationComponent,
+    BootstrapSliderComponent
   ],
   imports: [
     BrowserModule,

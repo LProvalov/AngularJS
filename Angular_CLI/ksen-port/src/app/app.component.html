@@ -1,8 +1,10 @@
-<div class="main">
+<div class="col-md-12 main">
   <div class="logo">
     <h1>{{title}}</h1>
   </div>
   <app-loading-notifycation></app-loading-notifycation>
   <app-navigation-menu></app-navigation-menu>
-  <router-outlet></router-outlet>
+  <div class="row">
+      <router-outlet></router-outlet>
+  </div>
 </div>

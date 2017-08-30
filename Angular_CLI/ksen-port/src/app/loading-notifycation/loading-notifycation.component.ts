@@ -14,12 +14,18 @@ export class LoadingNotifycationComponent implements OnInit {
   isShown: boolean;
 
   constructor( private loadingNotifycationService: LoadingNotifycationService ) {
-    loadingNotifycationService.notify$.subscribe(
+    loadingNotifycationService.notifyTurnOn$.subscribe(
       notify => {
-        this.isShown = !this.isShown;
+        this.isShown = true;
         this.loadingMessage = notify ? notify : this.DefaultMessage;
       }
     );
+
+    loadingNotifycationService.notifyTurnOff$.subscribe(
+      () => {
+        this.isShown = false;
+      }
+    )
   }
 
   ngOnInit() {

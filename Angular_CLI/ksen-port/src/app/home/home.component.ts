@@ -17,16 +17,20 @@ export class HomeComponent implements OnInit {
     private loadingNotifycationService: LoadingNotifycationService 
   ) { }
 
-  ngOnInit() {
-    this.getPartOfArtworks();
+  async ngOnInit(): Promise<void> {
+    this.loadingNotifycationService.turnOnMessageShown("Loading home...");
+    this.artworks = await this.getLastArtworks(4);
+    this.loadingNotifycationService.turnOffMessageShown();
   }
 
-  getPartOfArtworks(): void {
-    this.loadingNotifycationService.turnMessageShown("Loading home...");
-    this.artworkService.getArtworksAsync().then(artworks => {
+  async getPartOfArtworks(): Promise<void> {
+    return this.artworkService.getArtworksAsync().then(artworks => {
       this.artworks = artworks.slice(1, 5);
-      this.loadingNotifycationService.turnMessageShown("");
     });
+  }
+
+  async getLastArtworks(count: number): Promise<ArtWork[]> {
+    return await this.artworkService.getLastArtworks(count);
   }
 
   isArtworksFilled(): boolean {

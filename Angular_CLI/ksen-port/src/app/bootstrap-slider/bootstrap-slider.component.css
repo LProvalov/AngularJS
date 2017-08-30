@@ -1,0 +1,13 @@
+.carousel {
+    background-color: #34aa34;
+    width: 100%;
+    height: 300px;
+}
+
+.carousel .item {
+    display: none;
+}
+
+.carousel .item.active {
+    display: block;
+}

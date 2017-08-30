@@ -1,0 +1,11 @@
+<div *ngIf="isVisible" id="carousel" class="carousel" data-ride="carousel">
+  <div>Carousel</div>  
+  <div class="" role="listbox">
+    <div *ngFor="let artwork of artworks" class="item" [ngClass]="{active: artwork.id == currentArtwork.id}">
+      <div class="">
+        {{artwork.title}}
+      </div>
+      <img src="{{artwork.src}}" />
+    </div>
+  </div>
+</div>

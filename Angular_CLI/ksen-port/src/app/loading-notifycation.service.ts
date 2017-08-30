@@ -4,11 +4,17 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class LoadingNotifycationService {
 
-  private notifySource = new Subject<string>();
-  notify$ = this.notifySource.asObservable();
+  private notifyTurnOn = new Subject<string>();
+  private notifyTurnOff = new Subject<void>();
+  notifyTurnOn$ = this.notifyTurnOn.asObservable();
+  notifyTurnOff$ = this.notifyTurnOff.asObservable();
 
-  turnMessageShown(message: string){
-    this.notifySource.next(message);
+  turnOnMessageShown(message: string){
+    this.notifyTurnOn.next(message);
+  }
+
+  turnOffMessageShown(){
+    this.notifyTurnOff.next();
   }
 
   constructor() { 

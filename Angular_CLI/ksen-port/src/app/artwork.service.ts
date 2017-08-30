@@ -31,6 +31,13 @@ export class ArtworkService {
     });
   }
 
+  getLastArtworks(count: number): Promise<ArtWork[]> {
+    return new Promise((resolve: Function, reject: Function) => {
+      setTimeout(() => {
+        resolve(ARTWORKS.slice(ARTWORKS.length - count, ARTWORKS.length));
+      }, 1000);
+    });
+  }
   getArtwork(id: number): Promise<ArtWork> {
     return this.getArtworksAsync()
       .then( artworks => artworks.find(artwork => artwork.id === id));

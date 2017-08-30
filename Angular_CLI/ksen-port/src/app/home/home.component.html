@@ -1,9 +1,5 @@
-
-<div class="grid grid-pad">
-  <!--div *ngIf="!isArtworksFilled()">Loading...</div-->
-  <div *ngFor="let artwork of artworks" class="col-1-4">
-    <div class="module artwork">
-      <h4>{{artwork.title}}</h4>
-    </div>
+<div class="col-md-12">
+  <div class="grid grid-pad">
+    <app-bootstrap-slider [artworks]="artworks" [delayMs]="10000"></app-bootstrap-slider>
   </div>
 </div>

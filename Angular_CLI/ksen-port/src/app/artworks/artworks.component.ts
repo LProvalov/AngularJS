@@ -15,8 +15,10 @@ export class ArtworksComponent implements OnInit {
     private loadingNotifycationeService: LoadingNotifycationService
   ) { }
 
-  ngOnInit(): void {
-    this.getArtworks();
+  async ngOnInit(): Promise<void> {
+    this.loadingNotifycationeService.turnOnMessageShown("Loading artworks...");
+    await this.getArtworks();
+    this.loadingNotifycationeService.turnOffMessageShown();
   }
 
   artworks: ArtWork[] = [];
@@ -29,11 +31,9 @@ export class ArtworksComponent implements OnInit {
     this.selectedArtwork = null;
   }
 
-  getArtworks(): void {
-    this.loadingNotifycationeService.turnMessageShown("Loading artworks...");
-    this.artworkService.getArtworksAsync().then(artworks => {
+  async getArtworks(): Promise<void> {
+    return this.artworkService.getArtworksAsync().then(artworks => {
       this.artworks = artworks;
-      this.loadingNotifycationeService.turnMessageShown("");
     });
   }
 
