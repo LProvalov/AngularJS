@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ArtWork } from './models/artwork';
 
 const ARTWORKS: ArtWork[] = [
-  { id: 11, title: 'Flower', src: '' },
+  { id: 11, title: 'Flower', imgUrl: '' },
   { id: 12, title: 'Pot' },
   { id: 13, title: 'Flower 2' },
   { id: 14, title: 'Bus stop' },

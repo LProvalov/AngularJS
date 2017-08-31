@@ -10,7 +10,7 @@
         <div *ngFor="let artwork of artworks" class="col-md-4">
           <div class=" text-center img-block">
             <a [routerLink]="['/artworks', artwork.id]">
-              <img class="img-preview img-thumbnail"/>
+              <img class="img-preview img-thumbnail" src="{{artwork.imgUrl}}"/>
               <br/>
               {{artwork.title}}
             </a>
