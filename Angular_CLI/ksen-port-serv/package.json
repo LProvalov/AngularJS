@@ -7,9 +7,11 @@
     "Socket": "app.js"
   },
   "dependencies": {
+    "@types/busboy": "^0.2.3",
     "@types/config": "0.0.32",
     "async": "^2.1.4",
     "body-parser": "^1.17.2",
+    "busboy": "^0.2.14",
     "config": "^1.26.2",
     "core-js": "^2.4.1",
     "errorhandler": "^1.5.0",
