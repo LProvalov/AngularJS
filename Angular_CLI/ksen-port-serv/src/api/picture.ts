@@ -1,4 +1,5 @@
 import { Application, Request, Response } from "express";
+import * as Busboy from 'busboy';
 import { ApiBase } from "./apiBase";
 import { PictureGetQuery, PicturesGetQuery,
     validatorPicture as PictureQueryValidator,
@@ -8,11 +9,11 @@ import { service as PictureService } from "./../services/pictureService";
 export class PictureApi extends ApiBase {
 
     public static create(app: Application) {
-        app.get(ApiBase.apiUrl + '/picture', (req: Request, res: Response) => {
+        app.get(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res);
         });
 
-        app.get(ApiBase.apiUrl + '/pictures', (req: Request, res: Response) => {
+        app.get(`${ApiBase.apiUrl}/pictures`, (req: Request, res: Response) => {
             new PictureApi().pictures(req, res);
         });
 
@@ -39,6 +40,18 @@ export class PictureApi extends ApiBase {
 
     protected picturePost(req: Request, res: Response) {
         try{
+            var busboy = new Busboy({ headers: req.headers });
+            busboy.on('file', (fildname: string, file: ReadableStream, filename: string,
+                encoding: string, mimetype: string) => {
+                
+                    
+            });
+            busboy.on('field', (fieldname: string, val: any, fieldnameTruncated: boolean,
+                 valTruncated: boolean, encoding: string, mimetype: string) => {
+                
+
+            });
+
             PictureService.UploadPicture({
                 title: "some title",
                 description:"some description"
