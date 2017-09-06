@@ -4,6 +4,7 @@
         "pathToPublic": "",
         "dbUrl": "mongodb://localhost:27017/temp-dev",
         "secret": "b35c92c8-55a3-48c2-8320-f6c59e8aef67",
-        "dbSecret": "ad73cf98-80a0-4d4b-91a2-7c54ff719c1f"
+        "dbSecret": "ad73cf98-80a0-4d4b-91a2-7c54ff719c1f",
+        "uploadFolder": "c://pic"
     }
 }

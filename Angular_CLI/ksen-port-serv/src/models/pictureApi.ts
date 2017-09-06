@@ -19,7 +19,7 @@ export class PicturesGetQuery {
 }
 class PicturesGetQueryValidator implements IValidator {
     Validate(query: any): boolean {
-        if(Object.keys(query).length ==2 && 
+        if(Object.keys(query).length == 2 && 
             "pageNumber" in query &&
             "pageSize" in query &&
             +query.pageNumber > 0 &&
@@ -30,3 +30,41 @@ class PicturesGetQueryValidator implements IValidator {
     }
 }
 export const validatorPictures: PicturesGetQueryValidator = new PicturesGetQueryValidator();
+
+export class PictureMetainfo {
+    title: string;
+    description: string;
+}
+class PictureMetainfoValidator implements IValidator {
+    Validate(query: any): boolean {
+        if(Object.keys(query).length == 2 &&
+            "title" in query &&
+            (query.title as string).length > 0 &&
+            "description" in query){
+                return true;
+        }
+        return false;
+    }
+}
+export const validatorPictureMetainfo: PictureMetainfoValidator = new PictureMetainfoValidator();
+
+export class PictureUpdateMetainfo {
+    id: string;
+    title: string;
+    description: string;
+}
+class PictureUpdateMetainfoValidator implements IValidator {
+    Validate(query: any): boolean {
+        if(Object.keys(query).length == 3 &&
+            "id" in query &&
+            "title" in query &&
+            "description" in query &&
+            (query.title as string).length > 0 &&
+            (query.id as string).length > 1
+        ) {
+            return true;
+        }
+        return false;
+    }
+}
+export const validatorPictureUpdateMetainfo: PictureUpdateMetainfoValidator = new PictureUpdateMetainfoValidator();

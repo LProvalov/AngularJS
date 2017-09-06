@@ -81,6 +81,36 @@ export class PictureModel {
         });
     }
 
+    static updatePicture(picture: IPicture): Promise<boolean> {
+        return new Promise<boolean>( (resolve, reject) => {
+            let repo = new PictureRepository();
+            repo.update(picture._id, picture, (err, res) => {
+                if(err) reject(err);
+                resolve(true);
+            });
+        });   
+    }
+
+    static deletePicture(picture: IPicture): Promise<boolean> {
+        return new Promise<boolean>( (resolve, reject) => {
+            let repo = new PictureRepository();
+            repo.delete(picture.id, (err, res) => {
+                if(err) reject(err);
+                resolve(true);
+            });
+        });
+    }
+
+    static readPictureById(id: string): Promise<IPicture> {
+        return new Promise<IPicture>( (resolve, reject) => {
+            let repo = new PictureRepository();
+            repo.findById(id, (err, res) => {
+                if(err) reject(err);
+                resolve(res);
+            });
+        });
+    }
+
     static getAllPictures(): Promise<IPicture[]> {
         return new Promise<IPicture[]>((resolve, reject) => {
             let repo = new PictureRepository();
@@ -93,18 +123,8 @@ export class PictureModel {
     }
 
     static getPictures(pageSize: number, pageNumber: number): Promise<IPicture[]> {
-        console.log(`pageSize: ${pageSize}, pageNumber: ${pageNumber}`);
         let repo = new PictureRepository();
         return repo.find({}).skip(+(pageSize * (pageNumber - 1))).limit(+pageSize).exec();
-        //return new Promise<IPicture[]>((resolve, reject) => {
-        //    
-        //    /*.exec((err, res) => {
-        //        if(err) reject(err);
-        //        console.log(typeof(res));
-        //        if(res.length) resolve(res);
-        //        else resolve(null);
-        //    });*/ 
-        //});
     }
 
     static picturesCount(): Promise<number> {
