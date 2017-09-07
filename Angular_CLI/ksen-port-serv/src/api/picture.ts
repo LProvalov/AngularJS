@@ -58,7 +58,7 @@ export class PictureApi extends ApiBase {
                     valTruncated: boolean, encoding: string, mimetype: string) => {
                         if(fieldname != "metainfo") throw new Error("Wrong field name in request.");
                         let metainfo: PictureMetainfo = this.queryValidation<PictureMetainfo>(val, PictureMetainfoValidator);
-                        resolve(metainfo);                        
+                        resolve(metainfo);
                 });
             });
             
@@ -80,8 +80,10 @@ export class PictureApi extends ApiBase {
             });
             req.pipe(busboy);
         } catch(e) {
+            console.log(JSON.stringify(e));
             console.log(e);
-            res.status(400).send();
+            req.unpipe(busboy);
+            res.status(500).send('Upload error occured');
         }
     }
 

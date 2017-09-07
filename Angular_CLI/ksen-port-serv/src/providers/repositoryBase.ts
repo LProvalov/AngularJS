@@ -67,12 +67,12 @@ export class RepositoryBase<T extends mongoose.Document> implements IRead<T>, IW
     }
 
     findOne(cond?: Object, callback?: (error: any, result: T) => void): mongoose.Query<T>{
-        return this._model.findOne(cond, callback);
+        return <mongoose.Query<T>>this._model.findOne(cond, callback);
     }
 
     find(cond?: Object, fields?: Object, options?: Object,
         callback?: (err: any, res: T[]) => void): mongoose.Query<T[]>{
-        return this._model.find(cond, options, callback);
+        return <mongoose.Query<T[]>>this._model.find(cond, options, callback);
     }
 
     count(cond: Object, callback?: (err: any, res: number) => void): mongoose.Query<number> {
