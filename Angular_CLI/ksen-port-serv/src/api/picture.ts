@@ -34,6 +34,8 @@ export class PictureApi extends ApiBase {
             let pictureQuery: PictureGetQuery = this.queryValidation<PictureGetQuery>(req.query, PictureQueryValidator);
             PictureService.ReadPictureMetainfo(pictureQuery.id).then((value) =>{
                 res.status(200).send(JSON.stringify(value));
+            }, (reason) => {
+                res.status(400).send(JSON.stringify(reason));
             });        
         } catch (e) {
             console.log(e);
@@ -57,7 +59,7 @@ export class PictureApi extends ApiBase {
                 busboy.on('field', (fieldname: string, val: any, fieldnameTruncated: boolean,
                     valTruncated: boolean, encoding: string, mimetype: string) => {
                         if(fieldname != "metainfo") throw new Error("Wrong field name in request.");
-                        let metainfo: PictureMetainfo = this.queryValidation<PictureMetainfo>(val, PictureMetainfoValidator);
+                        let metainfo: PictureMetainfo = this.queryValidation<PictureMetainfo>(JSON.parse(val), PictureMetainfoValidator);
                         resolve(metainfo);
                 });
             });
