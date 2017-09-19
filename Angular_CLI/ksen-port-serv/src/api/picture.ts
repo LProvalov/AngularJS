@@ -12,14 +12,23 @@ import { IPicture } from "./../models/picture";
 export class PictureApi extends ApiBase {
 
     public static create(app: Application) {
+        // GET: apibase/picture?id={pic_id}
         app.get(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
+            new PictureApi().picture(req, res, true);
+        });
+        
+        // GET: apibase/picture/{pic_id}
+        app.get(`${ApiBase.apiUrl}/picture/:id`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res);
         });
 
+        // GET: apibase/pictures?pageSize={5}&pageNumber={1}
         app.get(`${ApiBase.apiUrl}/pictures`, (req: Request, res: Response) => {
             new PictureApi().pictures(req, res);
         });
 
+        // POST: apibase/picture/ ...
+        // multipart request
         app.post(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
             new PictureApi().picturePost(req, res);
         });
@@ -29,11 +38,11 @@ export class PictureApi extends ApiBase {
         super();
     }
 
-    protected picture(req: Request, res: Response) {
+    protected picture(req: Request, res: Response, isQuery?: boolean) {
         try {
-            let pictureQuery: PictureGetQuery = this.queryValidation<PictureGetQuery>(req.query, PictureQueryValidator);
-            PictureService.ReadPictureMetainfo(pictureQuery.id).then((value) =>{
-                res.status(200).send(JSON.stringify(value));
+            let pictureQuery: PictureGetQuery = this.queryValidation<PictureGetQuery>(isQuery ? req.query : req.params, PictureQueryValidator);
+            PictureService.ReadPictureMetainfo(pictureQuery.id).then((pictureModel) =>{
+                res.sendFile(pictureModel.path);
             }, (reason) => {
                 res.status(400).send(JSON.stringify(reason));
             });        
