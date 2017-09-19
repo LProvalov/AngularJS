@@ -12,12 +12,12 @@ import { IPicture } from "./../models/picture";
 export class PictureApi extends ApiBase {
 
     public static create(app: Application) {
-        // GET: apibase/picture?id={pic_id}
+        // GET: apibase/picture?id={id}
         app.get(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res, true);
         });
         
-        // GET: apibase/picture/{pic_id}
+        // GET: apibase/picture/{id}
         app.get(`${ApiBase.apiUrl}/picture/:id`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res);
         });
@@ -31,6 +31,11 @@ export class PictureApi extends ApiBase {
         // multipart request
         app.post(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
             new PictureApi().picturePost(req, res);
+        });
+
+        // DELETE: apibase/picture/{id}
+        app.delete(`${ApiBase.apiUrl}/picture/:id`, (req: Request, res: Response) => {
+            new PictureApi().deletePicture(req, res);
         });
     }
 
@@ -48,7 +53,7 @@ export class PictureApi extends ApiBase {
             });        
         } catch (e) {
             console.log(e);
-            res.status(400).send();
+            res.status(500).send();
         }
     }
 
@@ -109,8 +114,23 @@ export class PictureApi extends ApiBase {
             
         } catch(e) {
             console.log(e);
-            res.status(400).send();
+            res.status(500).send();
         }
     }
 
+    protected async deletePicture(req: Request, res: Response){
+        try {
+            let pictureId = req.params.id as string;
+            let picModel = await PictureService.ReadPictureMetainfo(pictureId);
+            if(picModel) {
+                PictureService.DeletePicture(picModel);
+                res.status(200).send();
+            } else {
+                res.status(400).send();
+            }
+        } catch(e) {
+            console.log(e);
+            res.status(500).send();
+        }
+    }
 }

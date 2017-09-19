@@ -14,7 +14,13 @@ class PictureService{
     }
 
     async ReadPictureMetainfo(id: string): Promise<IPicture> {
-        return await PictureModel.findPictureById(id);
+        return new Promise<IPicture>( (resolve, reject) => {
+            PictureModel.findPictureById(id).then( (res) => {
+                resolve(res);
+            }, (resaon) => {
+                resolve(null)
+            });
+        });
     }
 
     async ReadPictureMetainfoPagination(pageSize: number, pageCount: number): Promise<IPicture[]> {

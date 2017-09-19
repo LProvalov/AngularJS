@@ -1,0 +1,9 @@
+{
+    "Application": {
+        "Api": {
+            "Url": "localhost:3000/api",
+            "ArtworksList": "/pictures?pageNumber={0}&pageSize={1}",
+            "DownloadArtwork": "/picture/{0}"
+        }
+    }
+}
