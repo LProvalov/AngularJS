@@ -32,6 +32,7 @@ export class ArtworksComponent implements OnInit {
   }
 
   async getArtworks(): Promise<void> {
+    this.artworkService.getArtworksPageAsync(1, 5);
     return this.artworkService.getArtworksAsync().then(artworks => {
       this.artworks = artworks;
     });

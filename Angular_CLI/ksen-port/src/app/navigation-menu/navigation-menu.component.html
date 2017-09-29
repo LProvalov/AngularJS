@@ -1,5 +1,7 @@
-<ul class="nav nav-pills">
-  <li *ngFor="let page of pages" [ngClass]="{active: page.url == selectedPage.url}" role="presentation">
-    <a routerLink="{{page.url}}" (click)="menuClickHandler($event)">{{page.title}}</a>
-  </li>
-</ul>
+<nav>
+  <ul class="nav">
+    <li *ngFor="let page of pages" [ngClass]="{active: page.url == selectedPage.url}" role="presentation">
+      <a routerLink="{{page.url}}" (click)="menuClickHandler($event)">{{page.title}}</a>
+    </li>
+  </ul>
+</nav>

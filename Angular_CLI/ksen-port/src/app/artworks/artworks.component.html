@@ -1,20 +1,17 @@
-    <div class="col-md-2">
-      <div class="row">
-        <div class="col-md-12">
-        Filters
-        </div>
-      </div>
-    </div>
-    <div class="col-md-10 scrollbar">
-      <div class="row">
-        <div *ngFor="let artwork of artworks" class="col-md-4">
-          <div class=" text-center img-block">
-            <a [routerLink]="['/artworks', artwork.id]">
-              <img class="img-preview img-thumbnail" src="{{artwork.imgUrl}}"/>
-              <br/>
-              {{artwork.title}}
-            </a>
+<div class="artworks-container">
+  <div class="filters">
+  Filters
+  </div>
+  <div class="artworks-list">
+      <div *ngFor="let artwork of artworks" class="artwork-item">
+        <a [routerLink]="['/artworks', artwork.id]">
+          <div class="image-preview">
+              <img src="{{artwork.imgUrl}}"/>
           </div>
-        </div>
+          <div class="image-caption">
+              {{artwork.title}}
+          </div>
+        </a>
       </div>
-    </div>
+  </div>
+</div>

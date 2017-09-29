@@ -6,10 +6,7 @@ import 'rxjs/add/operator/toPromise';
 
 import * as _ from 'lodash';
 import { FormatString } from './utils';
-import * as Config from 'config';
-
-// TODO: resolve problem with get config.
-//var ApiConfig: any = Config.get('Application.Api');
+import * as config from 'config';
 
 const ARTWORKS: ArtWork[] = [
   { id: 11, title: 'Flower', imgUrl: '', description: '', uploadedAt: new Date() },
@@ -24,9 +21,12 @@ const ARTWORKS: ArtWork[] = [
   { id: 20, title: 'Draft #1', description: '', uploadedAt: new Date() }
 ];
 
-
 @Injectable()
 export class ArtworkService {
+
+  private baseUrl = "localhost:3000/api";
+  private artworksList = "/pictures?pageNumber={0}&pageSize={1}";
+  private downloadArtwork = "/picture/{0}";
 
   constructor(private http: Http) { }
 
@@ -40,25 +40,17 @@ export class ArtworkService {
         resolve(ARTWORKS);
       }, 1000);
     });
+  }
 
-    //return new Promise((resolve, reject) => {
-    //  let url = ApiConfig.Url + FormatString(ApiConfig.ArtworksList, 1, 10);
-    //  console.log(`Url: ${url}`);
-    //  this.http.get(url)
-    //    .toPromise()
-    //    .then(response => { 
-    //      _.map(response.json().data,  (item: any) => {
-    //        <ArtWork>{
-    //          id: item._id,
-    //          title: item.title,
-    //          description: item.description,
-    //          uploadedAt: item.uploadedAt,
-    //          imgUrl: ApiConfig.Url + FormatString(ApiConfig.DownloadArtwork, item._id)
-    //        }
-    //      }); 
-    //    })
-    //    .catch(this.handleError);
-    //});
+  getArtworksPageAsync(pageNumber: number, pageSize: number): Promise<ArtWork[]> {
+    return new Promise<ArtWork[]>( (resolve, reject) => {
+      let url = `${this.baseUrl}${FormatString(this.artworksList, pageNumber, pageSize)}`;
+      console.log(`url: ${url}`);
+      this.http.get(url).subscribe(data => {
+        console.log(JSON.stringify(data));
+        resolve(null);
+      });
+    });    
   }
 
   private handleError(error: any): Promise<any> {
@@ -69,7 +61,7 @@ export class ArtworkService {
   getLastArtworks(count: number): Promise<ArtWork[]> {
     return new Promise((resolve: Function, reject: Function) => {
       setTimeout(() => {
-        resolve(null/*ARTWORKS.slice(ARTWORKS.length - count, ARTWORKS.length)*/);
+        resolve(ARTWORKS.slice(ARTWORKS.length - count, ARTWORKS.length));
       }, 1000);
     });
   }
