@@ -1,6 +1,7 @@
 <nav>
   <ul class="nav">
-    <li *ngFor="let page of pages" [ngClass]="{active: page.url == selectedPage.url}" role="presentation">
+    <li *ngFor="let page of pages" role="presentation">
+      <div class="vertical-line" [ngClass]="{active: page.url == selectedPage.url}"></div>
       <a routerLink="{{page.url}}" (click)="menuClickHandler($event)">{{page.title}}</a>
     </li>
   </ul>

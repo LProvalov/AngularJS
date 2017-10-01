@@ -1,1 +1,23 @@
-<app-bootstrap-slider [artworks]="artworks" [delayMs]="10000"></app-bootstrap-slider>
+<!-- <app-bootstrap-slider [artworks]="artworks" [delayMs]="10000"></app-bootstrap-slider> -->
+<div class="grid-container">
+    <div class="artworks dark-template">
+        <div class="header light-header first">
+            Artworks
+        </div>
+        <div class="payload first">
+            <div *ngFor="let artwork of artworks" class="artwork-item">
+            </div>
+        </div>
+    </div>
+    <div class="layouts light-template">
+        <div class="header dark-header not-first">
+            <div class="line"></div>
+            Layouts
+        </div>
+        <div class="payload">
+            <div *ngFor="let layout of layouts" class="layout-item">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: #050505;
+}
+
+.artworks {
+    grid-row: 1;
+}
+
+.artworks > .header {
+    width: calc(4 * 300px);
+}
+
+.layouts {
+    grid-row: 1;
+}
+
+.dark-template {
+    background-color: #050505;
+}
+
+.light-template {
+    background-color: #9a9a9a;
+}
+
+.header {
+    margin-top: 25px;
+    margin-bottom: 10px;    
+    text-align: left;
+    font-size: 30px;
+    font-family: "Courier New";
+    line-height: 1.6;
+    color: #fff;
+    display: flex;
+}
+
+.dark-header {
+    height: 50px;
+    background-color: #333333;
+}
+
+.light-header {
+    height: 50px;
+    background-color: #00a49d;
+}
+
+.first {
+    padding-left: 55px;
+}
+
+.not-first {
+    margin-right: 30px;
+    margin-left: 15px;
+}
+
+.line {
+    height: 100%;
+    width: 10px;
+    margin: 0 15px 0 0;
+    background-color: #00a49d;
+}
+
+.payload {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.artwork-item {
+    min-width: 200px;
+    min-height: 200px;
+    width: 300px;
+    height: 300px;
+    background-color: #777777;
+}
+
+.artwork-item:nth-child(even){
+    background-color: #aaaaaa;
+}

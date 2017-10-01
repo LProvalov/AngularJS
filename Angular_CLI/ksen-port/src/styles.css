@@ -1,24 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-
 body {
     margin: 0px;
-    background-color: #ffffff;
+    background-color: #333333;
     text-align: center;
-    font-family: Courier New, Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #content {
-    background-color: #555555;
+    background-color: #333333;
 }
-
-/*
-#content div {
-    background: #3bbced;
-}
-*/
-
-/*
-#content div:nth-child(even) {
-    background: #777;
-}
-*/

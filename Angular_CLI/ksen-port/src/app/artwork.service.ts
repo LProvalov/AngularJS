@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ArtWork } from './models/artwork';
+import { ArtWork, Layout } from './models/allmodels';
 
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -21,6 +21,14 @@ const ARTWORKS: ArtWork[] = [
   { id: 20, title: 'Draft #1', description: '', uploadedAt: new Date() }
 ];
 
+const LAYOUTS: Layout[] = [
+  {id: 11, title: 'title1', imgUrl: '', description: '', uploadedAt: new Date() },
+  {id: 12, title: 'title2', imgUrl: '', description: '', uploadedAt: new Date() },
+  {id: 13, title: 'title3', imgUrl: '', description: '', uploadedAt: new Date() },
+  {id: 14, title: 'title4', imgUrl: '', description: '', uploadedAt: new Date() },
+  {id: 15, title: 'title5', imgUrl: '', description: '', uploadedAt: new Date() }
+]
+
 @Injectable()
 export class ArtworkService {
 
@@ -39,6 +47,14 @@ export class ArtworkService {
       setTimeout(function() {
         resolve(ARTWORKS);
       }, 1000);
+    });
+  }
+
+  getLayoutsAsync(): Promise<Layout[]> {
+    return new Promise((resolve, reject) => {
+      setTimeout(function() {
+        resolve(LAYOUTS);
+      }, 700);
     });
   }
 
@@ -65,6 +81,16 @@ export class ArtworkService {
       }, 1000);
     });
   }
+
+  getLastLayoutsAsync(count: number): Promise<Layout[]> {
+    return new Promise((resolve, reject) => {
+      setTimeout(function() {
+        if(LAYOUTS.length >= count) resolve(LAYOUTS.slice(LAYOUTS.length - count, LAYOUTS.length));
+        else resolve(LAYOUTS);
+      }, 700);
+    });
+  }
+
   getArtwork(id: number): Promise<ArtWork> {
     return this.getArtworksAsync()
       .then( artworks => artworks.find(artwork => artwork.id === id));

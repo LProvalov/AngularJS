@@ -1,12 +1,11 @@
 <div class="logo">
-    <h2>{{title}}</h2>
+  <div class="logo-img"></div>
+  <div class="title">{{title}}</div>
 </div>
-<div class="grid-container">
-  <div class="navigation">
+<div class="navigation">
     <app-navigation-menu></app-navigation-menu>
-  </div>
-  <div class="payload">
-      <router-outlet></router-outlet>
-  </div>
+</div>
+<div class="payload">
+  <router-outlet></router-outlet>
 </div>
 <app-loading-notifycation></app-loading-notifycation>

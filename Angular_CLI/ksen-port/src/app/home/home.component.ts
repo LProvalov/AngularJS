@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtworkService } from './../artwork.service';
-import { ArtWork } from './../models/allmodels';
+import { ArtWork, Layout } from './../models/allmodels';
 import { LoadingNotifycationService } from './../loading-notifycation.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { LoadingNotifycationService } from './../loading-notifycation.service';
 export class HomeComponent implements OnInit {
 
   artworks: ArtWork[] = [];
+  layouts: Layout[] = [];
 
   constructor( 
     private artworkService: ArtworkService,
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loadingNotifycationService.turnOnMessageShown("Loading home...");
-    this.artworks = await this.getLastArtworks(4);
+    this.artworks = await this.getLastArtworks(8);
+    this.layouts = await this.getLastLayouts(3);
     this.loadingNotifycationService.turnOffMessageShown();
   }
 
@@ -31,6 +33,10 @@ export class HomeComponent implements OnInit {
 
   async getLastArtworks(count: number): Promise<ArtWork[]> {
     return await this.artworkService.getLastArtworks(count);
+  }
+
+  async getLastLayouts(count: number): Promise<Layout[]> {
+    return await this.artworkService.getLastLayoutsAsync(count);
   }
 
   isArtworksFilled(): boolean {

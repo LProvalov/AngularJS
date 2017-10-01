@@ -3,13 +3,14 @@
     color: white;
 }
 
-.grid-container {
+.payload {
+    /*
     display: grid;
     grid-template-columns: repeat(12, auto);
-    grid-template-rows: repeat(2, minmax(25px, auto));
-    max-width: 960px;
-    margin: 50px auto;
-    min-height: 99%;
+    grid-template-rows: repeat(1, minmax(25px, auto));
+    */
+    max-width: auto;
+    margin: 20px auto 0 auto;
 }
 
 .loading {
@@ -26,8 +27,13 @@
     height: 50px;
     margin: 0;
     text-align: left;
-    background-color: #000;
-    color: #fff;
+    display: flex;
+
+    background: #000000; /* Old browsers */
+    background: -moz-linear-gradient(left, #000000 10%, #555555 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #000000 10%,#555555 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #000000 10%,#555555 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#555555',GradientType=1 ); /* IE6-9 */
 }
 
 .logo h2 {
@@ -35,13 +41,27 @@
     padding: 15px 0 0 10px;
 }
 
-.navigation {
-    grid-column: 1 / 13;
-    grid-row: 1;
-    background-color: #555555;
+.logo-img {
+    background-image: url('../assets/logo.png');
+    margin: 12px 0 0 30px;
+    width: 30px;
+    height: 30px;
 }
 
-.payload {
-    grid-column: 1 / 13;
-    grid-row: 2;
+.title {
+    margin-left: 8px;
+    font-size: 36px;
+    font-family: "Courier New";
+    line-height: 1.6;
+    color: #fff;
+}
+
+.navigation {
+    margin-top: 50px;
+    height: 30px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(left, #ffffff 20%, #555555 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #ffffff 20%,#555555 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #ffffff 20%,#555555 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#555555', GradientType=1 ); /* IE6-9 */
 }

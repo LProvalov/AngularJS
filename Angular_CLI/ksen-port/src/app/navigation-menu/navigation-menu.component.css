@@ -1,27 +1,33 @@
 .nav {
-    margin: 0;
+    margin: 0 0 0 50px;
     padding: 0;
-    background: #77CC9A;
-    list-style-type: none;    
+    list-style-type: none;
+    color: rgb(0, 0, 0);
 }
 
 .nav li {
     float: left;
+    display: flex;
+    padding: 5px 0 5px 32px;
+}
+
+.nav li:first-child{
+    padding: 5px 0 5px 0;
 }
 
 .nav li a {
-    color:white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     display: block;
-    padding: 5px 0 5px 10px;
+    padding-left: 3px;
 }
 
-.nav .active a {
-    text-decoration: underline;
+.vertical-line {
+    margin: 3px 0 3px 0;
+    height: 12px;
+    width: 1px;
 }
 
-/*
-.nav li a:hover {
-    color: #B1E0FF;
+.vertical-line.active {
+    background-color: #000000;
 }
-*/
