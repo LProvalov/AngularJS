@@ -6,14 +6,12 @@
 
 .artworks {
     grid-row: 1;
-}
-
-.artworks > .header {
-    width: calc(4 * 300px);
+    min-width: 640px;
 }
 
 .layouts {
     grid-row: 1;
+    min-width: 320px;
 }
 
 .dark-template {
@@ -26,7 +24,8 @@
 
 .header {
     margin-top: 25px;
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
+    margin-right: 55px;
     text-align: left;
     font-size: 30px;
     font-family: "Courier New";
@@ -50,7 +49,6 @@
 }
 
 .not-first {
-    margin-right: 30px;
     margin-left: 15px;
 }
 
@@ -65,16 +63,63 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+    margin-right: 55px;
+    margin-bottom: 10px;
+    height: 100%;
+}
+
+.payload.not-first {
+    height: calc(100% - 95px);
+}
+
+.aspect-ratio-wrapper {
+    position: relative;
+}
+.aspect-ratio-wrapper > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+    .aspect-ratio-wrapper.four {
+        width: calc(100% / 4 - 1px);
+        padding-bottom: calc(100% / 4 - 1px);
+    }
+    .aspect-ratio-wrapper.three {
+        width: calc(100% / 3 - 1px);
+        padding-bottom: calc(100% / 3 - 1px);
+    }
+    .aspect-ratio-wrapper.two {
+        width: calc(100% / 2 - 1px);
+        padding-bottom: calc(100% / 2 - 1px);
+    }
+
+.full-height {
+    position: relative;
+    height: 100%;
+}
+.three-width {
+    width: calc(100% / 3 - 2px);
+}
+
+@-moz-document url-prefix() {
+    /* TODO: resolve problems with firefox */
+    div.aspect-ratio-wrapper {
+        height: 25vh;
+    }
 }
 
 .artwork-item {
-    min-width: 200px;
-    min-height: 200px;
-    width: 300px;
-    height: 300px;
     background-color: #777777;
+    border: 1px solid black;
 }
 
 .artwork-item:nth-child(even){
     background-color: #aaaaaa;
+}
+
+.layout-item {
+    background-color: #777777;
+    border: 1px solid black;
 }

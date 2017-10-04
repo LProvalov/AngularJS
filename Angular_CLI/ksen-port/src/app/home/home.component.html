@@ -5,7 +5,9 @@
             Artworks
         </div>
         <div class="payload first">
-            <div *ngFor="let artwork of artworks" class="artwork-item">
+            <div *ngFor="let artwork of artworks" class="aspect-ratio-wrapper four">
+                <div class="artwork-item">
+                </div>
             </div>
         </div>
     </div>
@@ -14,9 +16,8 @@
             <div class="line"></div>
             Layouts
         </div>
-        <div class="payload">
-            <div *ngFor="let layout of layouts" class="layout-item">
-
+        <div class="payload not-first">
+            <div *ngFor="let layout of layouts" class="layout-item three-width">
             </div>
         </div>
     </div>

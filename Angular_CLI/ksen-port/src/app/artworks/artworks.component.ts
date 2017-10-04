@@ -22,13 +22,14 @@ export class ArtworksComponent implements OnInit {
   }
 
   artworks: ArtWork[] = [];
-    selectedArtwork: ArtWork;
+  selectedArtwork: ArtWork;
 
   onSelect(artwork: ArtWork): void {
     if(artwork !== this.selectedArtwork) {
       this.selectedArtwork = artwork;
-    } else 
-    this.selectedArtwork = null;
+    } else {
+      this.selectedArtwork = null;
+    }
   }
 
   async getArtworks(): Promise<void> {

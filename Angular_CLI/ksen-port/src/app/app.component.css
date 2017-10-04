@@ -3,13 +3,7 @@
     color: white;
 }
 
-.payload {
-    /*
-    display: grid;
-    grid-template-columns: repeat(12, auto);
-    grid-template-rows: repeat(1, minmax(25px, auto));
-    */
-    max-width: auto;
+.body {
     margin: 20px auto 0 auto;
 }
 
@@ -59,6 +53,7 @@
 .navigation {
     margin-top: 50px;
     height: 30px;
+    min-width: 400px;
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(left, #ffffff 20%, #555555 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, #ffffff 20%,#555555 100%); /* Chrome10-25,Safari5.1-6 */
