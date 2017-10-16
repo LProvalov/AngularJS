@@ -7,7 +7,12 @@
         <div class="payload first">
             <div *ngFor="let artwork of artworks" class="aspect-ratio-wrapper four">
                 <div class="artwork-item">
+                    <img src="{{artwork.imgUrl}}">
                 </div>
+                <!--<div class="artwork-item" #imageLoader appImageLoader imageSourceUrl="{{artwork.imgUrl}}">
+                    <img *ngIf="imageLoader && imageLoader.data" src="{{imageLoader.data}}">
+                </div>
+                -->
             </div>
         </div>
     </div>

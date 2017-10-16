@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ArtworkService } from './../artwork.service';
 import { ArtWork, Layout } from './../models/allmodels';
 import { LoadingNotifycationService } from './../loading-notifycation.service';
+import { ImageLoaderDirective } from './../image-loader.directive';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   artworks: ArtWork[] = [];
   layouts: Layout[] = [];
+  @ViewChild('imageLoader') imageLoader: ImageLoaderDirective;
 
   constructor( 
     private artworkService: ArtworkService,
@@ -26,8 +28,8 @@ export class HomeComponent implements OnInit {
   }
 
   async getPartOfArtworks(): Promise<void> {
-    return this.artworkService.getArtworksAsync().then(artworks => {
-      this.artworks = artworks.slice(1, 5);
+    return this.artworkService.getArtworksPageAsync(1, 5).then(artworks => {
+      this.artworks = artworks;
     });
   }
 

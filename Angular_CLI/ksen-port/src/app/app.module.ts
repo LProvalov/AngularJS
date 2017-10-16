@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { NavigationMenuComponent } from './navigation-menu/navigation-menu.compo
 import { LoadingNotifycationComponent } from './loading-notifycation/loading-notifycation.component';
 import { LoadingNotifycationService } from './loading-notifycation.service';
 import { BootstrapSliderComponent } from './bootstrap-slider/bootstrap-slider.component';
+import { ImageLoaderDirective } from './image-loader.directive';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { BootstrapSliderComponent } from './bootstrap-slider/bootstrap-slider.co
     ArtworksComponent,
     NavigationMenuComponent,
     LoadingNotifycationComponent,
-    BootstrapSliderComponent
+    BootstrapSliderComponent,
+    ImageLoaderDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [ ArtworkService, NavigationService, LoadingNotifycationService ],
   bootstrap: [AppComponent]
