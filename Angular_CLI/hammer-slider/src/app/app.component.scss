@@ -1,0 +1,13 @@
+.container {
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.movable {
+    width: 100px;
+    height: 100px;
+    background-color: #444;
+    transition: transform 300ms ease-in-out;
+}
