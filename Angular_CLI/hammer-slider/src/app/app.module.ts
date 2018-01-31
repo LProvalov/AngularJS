@@ -6,16 +6,19 @@ import { AppComponent } from './app.component';
 
 import 'hammerjs';
 import 'hammer-timejs';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [SliderComponent]
 })
 export class AppModule { }

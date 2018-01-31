@@ -1,0 +1,7 @@
+<div class="container container-size" (panstart)="onPanStart($event)" (panmove)="onPan($event)">
+  <div #tref class="movable container-size">
+    <ng-content></ng-content>
+  </div>
+</div>
+<button (click)="onLeft($event)"> <<< </button>
+<button (click)="onRigth($event)"> >>> </button>

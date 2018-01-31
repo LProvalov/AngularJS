@@ -1,0 +1,15 @@
+.container-size {
+    width: auto;
+    height: auto;
+}
+
+.container {
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.movable {
+    background-color: #444;
+    transition: transform 300ms ease-in-out;
+    overflow: hidden;
+}
