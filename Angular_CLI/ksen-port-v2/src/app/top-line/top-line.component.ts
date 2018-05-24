@@ -5,7 +5,7 @@ import { ComponentsDisplayService } from './../services/components-display.servi
 @Component({
   selector: 'app-top-line',
   templateUrl: './top-line.component.html',
-  styleUrls: ['./top-line.component.css']
+  styleUrls: ['./top-line.component.scss']
 })
 export class TopLineComponent implements OnInit {
 
