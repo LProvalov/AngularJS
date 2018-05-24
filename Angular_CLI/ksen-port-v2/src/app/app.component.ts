@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(
+    private location: Location
+  ) { }
+
+  public isMainRouteVisible(): boolean {
+    return this.location.path() === "";
+  }
 }

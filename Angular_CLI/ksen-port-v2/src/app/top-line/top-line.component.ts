@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ComponentsDisplayService } from './../services/components-display.service';
+
 @Component({
   selector: 'app-top-line',
   templateUrl: './top-line.component.html',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopLineComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public componentDisplayService: ComponentsDisplayService
+  ) { }
 
   ngOnInit() {
   }

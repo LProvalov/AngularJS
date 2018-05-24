@@ -1,7 +1,9 @@
 <app-top-line></app-top-line>
 <nav>
+  <a *ngIf="!isMainRouteVisible()" routerLink="/main">На главную</a>
   <a routerLink="/about">О нас</a>
   <a routerLink="/delivery">Доставка и оплата</a>
   <a routerLink="/contacts">Контакты</a>
 </nav>
 <router-outlet></router-outlet>
+<app-footer></app-footer>
