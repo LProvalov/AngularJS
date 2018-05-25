@@ -10,6 +10,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { TopLineComponent } from './top-line/top-line.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { FooterComponent } from './footer/footer.component';
+import { BasketComponent } from './basket/basket.component';
+import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FooterComponent } from './footer/footer.component';
     ContactsComponent,
     TopLineComponent,
     DeliveryComponent,
-    FooterComponent
+    FooterComponent,
+    BasketComponent,
+    MainNavigationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,15 @@
-<div *ngIf="componentDisplayService.TopLineVisible" class="row">
-  <div class="logo col-sm-6 col-md-6 col-lg-6">
-    КсюДизиГН - уникальные дизайнерские вещи!
-  </div>
-  <div class="basket col-sm-6 col-md-6 col-lg-6">
-    Basket
+<div id="top-line">
+  <div *ngIf="componentDisplayService.TopLineVisible" class="row">
+    <div class="left-side-container col-sm-6 col-md-6 col-lg-6">
+      <div class="logo">
+        Творить может <br/>КАЖДЫЙ!
+      </div>
+      <div class="logo-utp">
+        Магазин уникальных дизайнерских вещей.
+      </div>
+    </div>
+    <div class="right-side-container col-sm-6 col-md-6 col-lg-6">
+      <app-basket></app-basket>
+    </div>
   </div>
 </div>

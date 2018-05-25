@@ -1,0 +1,16 @@
+@import "./../../styles.scss";
+
+#main-navigation {
+    font-family: font-main;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 45px;
+    
+    .nav{
+        li{
+            margin: 0 15px 0 15px;
+        }
+        
+    }
+}
