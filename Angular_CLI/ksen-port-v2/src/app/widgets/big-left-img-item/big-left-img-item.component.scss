@@ -1,0 +1,66 @@
+@import "./../../../styles.scss";
+
+.big-left-img-item {
+    padding: 10px 10px 10px 10px;
+    background: $blii-main-background;
+    border-radius: $blii-main-border-radius;
+
+    display: flex;
+    flex-direction: row;
+    .image {
+        background: #555;
+    }
+
+    .details {
+        padding: 20px;
+        
+        .title {
+            font-family: $blii-title-font;
+            font-size: 20pt;
+            width: 100%;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-family: $blii-description-font;
+            font-size: 15pt;
+            width: 100%;
+        }
+
+        .set {
+            margin-top: 20px;
+            font-size: 10pt;
+            font-style: italic;
+            font-family: $blii-description-font;
+
+            ul {
+                list-style-type: circle;
+            }
+        }
+
+        .price-container {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            font-weight: bold;
+            font-size: 25pt;
+            color: white;
+            .price-box{
+                display: flex;
+                flex-direction: row;
+                background: $price-background;
+                border-radius: 10px;
+                padding: 2px 10px 2px 10px;
+                .value {
+                
+                }
+                .in-basket {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

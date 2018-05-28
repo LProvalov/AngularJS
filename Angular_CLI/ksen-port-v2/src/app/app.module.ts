@@ -12,6 +12,7 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { FooterComponent } from './footer/footer.component';
 import { BasketComponent } from './basket/basket.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { BigLeftImgItemComponent } from './widgets/big-left-img-item/big-left-img-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
     DeliveryComponent,
     FooterComponent,
     BasketComponent,
-    MainNavigationComponent
+    MainNavigationComponent,
+    BigLeftImgItemComponent
   ],
   imports: [
     BrowserModule,
