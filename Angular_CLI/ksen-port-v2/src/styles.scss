@@ -10,6 +10,10 @@ $price-background: #99d;
 $blii-title-font: kelly slab,fantasy;
 $blii-description-font: futura-lt-w01-light, sans-serif;
 
+html {
+    font-size: 14px;
+}
+
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
@@ -18,7 +22,6 @@ $blii-description-font: futura-lt-w01-light, sans-serif;
 }
 
 $small: 375px;
-$small-plus: 414px;
 $large: 1024px;
 
 @mixin respond-to($media) {
@@ -26,10 +29,7 @@ $large: 1024px;
         @media only screen and (max-width: $small) { @content; }
     }
     @else if $media == medium-screens {
-        @media only screen and (min-width: $small + 1) and (max-width: $small-plus) { @content; }
-    }
-    @else if $media == medium-plus-screens {
-        @media only screen and (min-width: $small-plus + 1) and (max-width: $large - 1) { @content; }
+        @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
     }
     @else if $media == wide-screens {
         @media only screen and (min-width: $large) { @content; }
