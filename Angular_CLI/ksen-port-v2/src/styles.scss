@@ -8,4 +8,30 @@ $blii-main-border-radius: 10px;
 $blii-main-background: #eee;
 $price-background: #99d;
 $blii-title-font: kelly slab,fantasy;
-$blii-description-font: futura-lt-w01-light,sans-serif;
+$blii-description-font: futura-lt-w01-light, sans-serif;
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+$small: 375px;
+$small-plus: 414px;
+$large: 1024px;
+
+@mixin respond-to($media) {
+    @if $media == handhelds{
+        @media only screen and (max-width: $small) { @content; }
+    }
+    @else if $media == medium-screens {
+        @media only screen and (min-width: $small + 1) and (max-width: $small-plus) { @content; }
+    }
+    @else if $media == medium-plus-screens {
+        @media only screen and (min-width: $small-plus + 1) and (max-width: $large - 1) { @content; }
+    }
+    @else if $media == wide-screens {
+        @media only screen and (min-width: $large) { @content; }
+    }
+}
