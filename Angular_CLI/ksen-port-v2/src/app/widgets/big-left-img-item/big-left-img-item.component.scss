@@ -117,6 +117,13 @@ $details-min-width: 300px;
                 display: flex;
                 flex-direction: row;
                 background: $price-background;
+                &:hover {
+                    border: 1px #777 solid;
+                }
+                &:active {
+                    background: $price-background-hover;
+                }
+                border: 1px #aaa solid;
                 border-radius: 10px;
                 height: 5rem;
                 width: 20rem;

@@ -4,11 +4,10 @@
       <img src="http://via.placeholder.com/400x560" />
     </div>
     <div class="title">
-      Акварельный художественный набор
+      {{product.title}}
     </div>
     <div class="description">
-      Набор включает всё самое необходимое для занятия акварелью. Всего то надо набрать водички в стаканчик и начать рисовать,
-      ни чего сложного нет!!!
+      {{product.description}}
       <div class="links-to-works">
         <div class="links-to-works-title">
           Этими материалами были реализованы следующие работы
@@ -17,26 +16,27 @@
 
         </div>
       </div>
-      <div class="set">
+      <div *ngIf="isCombinedProduct()" class="set">
         <div class="set-title">В набор входит</div>
         <ul>
-          <li>Бумага акварельная озозо</li>
-          <li>Кисть супер пупер азаза</li>
-          <li>Акварель тро-ло-ло</li>
+          <li *ngFor="let description of getCombinedProductDescription()">{{description}}</li>
         </ul>
       </div>
     </div>
     <div class="price-container">
-      <div class="price-box">
+      <div *ngIf="!isInBasket()" class="price-box" (click)="onBasketClick()">
         <div class="value">
-          1200р
+          {{product.price}} руб.
         </div>
         <div class="in-basket">
           В корзину
         </div>
       </div>
+      <div *ngIf="isInBasket()">
+        <div class="toBascketLink">
+          <a routerLink="/basket">К покупкам</a>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </div>

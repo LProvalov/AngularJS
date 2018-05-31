@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product, CombinedProduct, IProduct, BasketProduct } from './../models/models';
+import { BasketService } from './../services/basket.service';
 
 @Component({
   selector: 'app-basket',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private basketService: BasketService
+  ) { }
 
   ngOnInit() {
+
+  }
+
+  getBasketList(): BasketProduct[] {
+    return this.basketService.getBasketList();
+  }
+
+  onIncrease(productId: number): void {
+    this.basketService.increaseProductInBasket(productId);
+  }
+
+  onDescrease(productId: number): void {
+    this.basketService.decreaseProductInBasket(productId);
   }
 
 }

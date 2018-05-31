@@ -1,8 +1,18 @@
-<div id="basket">
-  <div class="basket-label">
-    Товаров в корзине: 3
-  </div>
-  <div class="delivery-label">
-    Доставка 2 дн. <br/>до города N.
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-10">
+      <ul>
+        <li *ngFor="let item of getBasketList()">
+          <div class="product-item">{{item.productId}}</div>
+          <div class="product-count">
+            <div class="count-value">
+              {{item.count}}
+            </div>
+            <button class="inc" (click)="onIncrease(item.productId)">+</button>
+            <button class="dec" (click)="onDescrease(item.productId)">-</button>
+          </div>          
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

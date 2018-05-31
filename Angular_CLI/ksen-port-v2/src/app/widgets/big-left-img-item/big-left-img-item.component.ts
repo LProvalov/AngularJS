@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CombinedProduct } from './../../models/combinedProduct';
+import { Product } from './../../models/product';
+
+import { BasketService } from './../../services/basket.service';
 
 @Component({
   selector: 'app-big-left-img-item',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BigLeftImgItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private basketService: BasketService
+  ) { }
+
+  @Input() product: Product | CombinedProduct;
 
   ngOnInit() {
+  }
+
+  isCombinedProduct(): boolean {
+    return (this.product instanceof CombinedProduct);
+  }
+
+  getCombinedProductDescription(): String[] {
+    return (this.product as CombinedProduct).compositionDescription;
+  }
+
+  onBasketClick() {
+    this.basketService.insertInBasket(this.product.id);
+  }
+
+  isInBasket(): boolean {
+    if (this.product) return this.basketService.isInBasketList(this.product.id);
+    return false;
+  }
+
+  toBasketLinkClick() {
+    
   }
 
 }
