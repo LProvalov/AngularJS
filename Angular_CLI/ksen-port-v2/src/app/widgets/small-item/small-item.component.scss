@@ -1,0 +1,44 @@
+@import "./../../../styles.scss";
+
+$image-min-width: 16rem;
+$image-height: 16rem;
+
+
+.small-item {
+    .small-item-img {
+        grid-area: img;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: $image-min-width;
+            height: $image-height;
+            @include respond-to(handhelds) { 
+                width: calc(#{$image-min-width} / 3 * 2);
+                height: calc(#{$image-height} / 3 * 2);
+            }
+            @include respond-to(medium-screens) { 
+                width: calc(#{$image-min-width}); 
+                height: calc(#{$image-height});
+            }
+            //@include respond-to(wide-screens) { }
+            justify-content: stretch;
+        }
+    }
+
+    .small-item-title {
+
+    }
+
+    .small-item-description {
+
+    }
+
+    .small-item-price {
+
+    }
+
+    .small-item-price-in-basket {
+
+    }
+}
