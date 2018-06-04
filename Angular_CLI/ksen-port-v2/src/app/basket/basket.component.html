@@ -1,18 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-md-center">
     <div class="col col-lg-10">
-      <ul>
-        <li *ngFor="let item of getBasketList()">
-          <div class="product-item">{{item.productId}}</div>
-          <div class="product-count">
-            <div class="count-value">
-              {{item.count}}
-            </div>
-            <button class="inc" (click)="onIncrease(item.productId)">+</button>
-            <button class="dec" (click)="onDescrease(item.productId)">-</button>
-          </div>          
-        </li>
-      </ul>
+      <app-basket-product-list></app-basket-product-list>
     </div>
   </div>
 </div>

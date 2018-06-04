@@ -14,6 +14,8 @@ import { BasketComponent } from './basket/basket.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { BigLeftImgItemComponent } from './widgets/big-left-img-item/big-left-img-item.component';
 import { BasketLableComponent } from './widgets/basket-lable/basket-lable.component';
+import { BasketProductItemComponent } from './widgets/basket-product-item/basket-product-item.component';
+import { BasketProductListComponent } from './widgets/basket-product-list/basket-product-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { BasketLableComponent } from './widgets/basket-lable/basket-lable.compon
     BasketComponent,
     MainNavigationComponent,
     BigLeftImgItemComponent,
-    BasketLableComponent
+    BasketLableComponent,
+    BasketProductItemComponent,
+    BasketProductListComponent
   ],
   imports: [
     BrowserModule,

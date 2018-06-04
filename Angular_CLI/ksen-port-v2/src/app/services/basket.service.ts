@@ -4,12 +4,11 @@ import { Product, CombinedProduct, IProduct, BasketProduct } from './../models/m
 import { ProductService } from './product.service';
 
 import * as _ from 'lodash';
+import { Observable, of, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-
-
 
 export class BasketService {
 
@@ -17,7 +16,9 @@ export class BasketService {
 
   constructor(
     private productService: ProductService
-  ) { }
+  ) {
+
+  }
 
   insertInBasket(productId: number) {
     this.productService.getProduct(productId).subscribe(
@@ -30,7 +31,7 @@ export class BasketService {
             this.increaseProductInBasket(basketProduct.productId);
           }
           else {
-            this.productsInBasket.push(new BasketProduct(productId, 1));
+            this.productsInBasket.push(new BasketProduct(productId, 1, product.price));
           }
         }
       }
@@ -71,10 +72,24 @@ export class BasketService {
     return this.productsInBasket;
   }
 
+  getBasketPrice(): number {
+    var total: number = 0;
+    _.forEach(this.productsInBasket, product => {
+      total += product.price * product.count;
+    });
+    return total;
+  }
+
   isInBasketList(productId: number): boolean {
     var product = _.find(this.productsInBasket, (item: BasketProduct) => {
       return item.productId == productId;
     });
-    return product != null;
+    return (product != null && product.count > 0);
+  }
+
+  basketListCount(): number {
+    var count: number = 0;
+    this.productsInBasket.forEach(item => { if (item.count > 0) count++; });
+    return count;
   }
 }

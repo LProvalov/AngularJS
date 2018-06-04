@@ -10,23 +10,10 @@ import { BasketService } from './../services/basket.service';
 export class BasketComponent implements OnInit {
 
   constructor(
-    private basketService: BasketService
+    
   ) { }
 
   ngOnInit() {
 
   }
-
-  getBasketList(): BasketProduct[] {
-    return this.basketService.getBasketList();
-  }
-
-  onIncrease(productId: number): void {
-    this.basketService.increaseProductInBasket(productId);
-  }
-
-  onDescrease(productId: number): void {
-    this.basketService.decreaseProductInBasket(productId);
-  }
-
 }

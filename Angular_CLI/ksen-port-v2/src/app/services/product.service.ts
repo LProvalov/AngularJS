@@ -19,4 +19,11 @@ export class ProductService {
   getProduct(id: number): Observable<IProduct> {
     return of(PRODUCTS.find(product => product.id == id));
   }
+
+  async getProductDetails(id: number): Promise<IProduct> {
+    return new Promise<IProduct>((resolve, reject) => {
+      var details = PRODUCTS.find(product => product.id == id);
+      if (details) resolve(details);
+    });
+  }
 }

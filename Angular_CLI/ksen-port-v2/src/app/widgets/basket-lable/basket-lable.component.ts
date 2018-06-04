@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from './../../services/basket.service';
+
 
 @Component({
   selector: 'app-basket-lable',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketLableComponent implements OnInit {
 
-  constructor() { }
+  public basketCount: number;
+
+  constructor(
+    private basketService: BasketService
+  ) { }
 
   ngOnInit() {
+    
   }
 
+  getBasketCount(): number {
+    return this.basketService.basketListCount();
+  }
 }
