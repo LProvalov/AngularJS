@@ -1,31 +1,35 @@
 @import "./../../../styles.scss";
 
-$image-min-width: 16rem;
-$image-height: 16rem;
-$item-color: #eee;
-$item-highlight-color: #ddd; 
-$item-shadow-color: #555;
+ $image-min-width: 17rem;
+ $image-height: 17rem;
 
-.small-item {
+.medium-item {
+    max-width: 24.7rem;
+    //max-height: 17rem;
+    margin: 1rem auto 2rem;
+
     display: grid;
     grid-template:
         "img"
-        "title"
-        "description";
-    padding: 1rem;
-    background: $item-color;
-    height: 100%;
+        "container";
 
-    &:hover {
-        background: $item-highlight-color;
-        box-shadow: 0 0 0.5rem $item-shadow-color;
-    }
-
-    .small-item-img {
+    .medium-item-img {
         grid-area: img;
         display: flex;
-        align-items: center;
+        position: relative;
+        align-content: center;
         justify-content: center;
+
+        .medium-item-lable {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.2rem;
+    
+            margin: 1rem;
+            background: lightseagreen;
+        }
+
         img {
             width: $image-min-width;
             height: $image-height;
@@ -42,8 +46,14 @@ $item-shadow-color: #555;
         }
     }
 
-    .small-item-container {
-        width: $image-min-width;
+    .medium-item-container {
+        grid-area: container;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: stretch;
+        padding: 1rem 1.5rem 1rem 1.5rem;
+
         @include respond-to(handhelds) { 
             width: calc(#{$image-min-width} / 3 * 2);
         }
@@ -51,12 +61,12 @@ $item-shadow-color: #555;
             width: calc(#{$image-min-width});
         }
 
-        .small-item-title {
-            grid-area: title;
-            display: flex;
-            justify-content: center;
+        .medium-item-title {
+            word-wrap: break-word;
+            word-break: break-word;
             margin-top: 0.5rem;
-            font-size: 2rem;
+            font-size: 1.7rem;
+            text-overflow: ellipsis;
             @include respond-to(medium-screens) { 
                 font-size: 1.7rem;
             }
@@ -66,16 +76,13 @@ $item-shadow-color: #555;
             text-align: center;
             font-weight: bold;
         }
-    
-        .small-item-description {
-            grid-area: description;
-            display: none;
+        .medium-item-description {
         }
+        .medium-item-price {
     
-        .small-item-price {
-            display: flex;
-            justify-content: center;
-            font-size: 1.4rem;
         }
-    }
+        .medium-item-in-basket {
+    
+        }
+    }    
 }

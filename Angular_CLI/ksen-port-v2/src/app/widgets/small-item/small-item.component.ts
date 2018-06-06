@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductGroup } from '../../models/productGroup';
 
 @Component({
   selector: 'app-small-item',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SmallItemComponent implements OnInit {
 
+  @Input() productGroup: ProductGroup;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getProductGroupPriceStr(): string {
+    return `От ${this.productGroup.price} руб.`;
   }
 
 }

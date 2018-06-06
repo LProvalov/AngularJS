@@ -4,6 +4,7 @@ import { CombinedProduct, Product, IProduct } from './../models/models';
 import { ProductService } from './../services/product.service';
 
 import * as _ from 'lodash';
+import { ProductGroup } from '../models/productGroup';
 
 @Component({
   selector: 'app-main',
@@ -18,6 +19,7 @@ export class MainComponent implements OnInit {
 
   products: (IProduct)[];
   mainProduct: CombinedProduct;
+  productGroups: ProductGroup[];
 
   ngOnInit() {
     this.productService.getProduct(11).subscribe(item => {
@@ -30,7 +32,10 @@ export class MainComponent implements OnInit {
 
     this.productService.getProducts().subscribe(products => {
       this.products = products;
-      
+    });
+
+    this.productService.getProductGroups().subscribe(pGs => {
+      this.productGroups = pGs;
     });
   }
 

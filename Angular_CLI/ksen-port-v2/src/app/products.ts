@@ -1,4 +1,5 @@
 import { Product, CombinedProduct } from './models/models';
+import { ProductGroup } from './models/productGroup';
 
 export const PRODUCTS: (Product | CombinedProduct)[] = [
     new Product(
@@ -51,3 +52,10 @@ export const PRODUCTS: (Product | CombinedProduct)[] = [
         ]
     )
 ]
+
+export const PRODUCT_GROUP: ProductGroup[] = [
+        new ProductGroup(1, "Каллиграфия", "Перья, кисти, тушь и чернила", 250),
+        new ProductGroup(2, "Маркеры", null, 250),
+        new ProductGroup(2, "Акварель", "Краска, кисти, бумага", 250),
+        new ProductGroup(2, "Дизайнерские товары", "Открытки, Скетчбуки, Футболки с принтами и многое другое", null),
+];

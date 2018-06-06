@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProductGroup } from '../../models/productGroup';
 
 @Component({
   selector: 'app-four-line-item',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FourLineItemComponent implements OnInit {
 
+  @Input() productGroups: ProductGroup[];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getFourProductGroups(): ProductGroup[] {
+    return this.productGroups.slice(0, 4);
   }
 
 }

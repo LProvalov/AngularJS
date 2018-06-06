@@ -1,17 +1,16 @@
 <div class="small-item">
   <div class="small-item-img">
-    <img src="http://via.placeholder.com/250x250"/>
+    <img src="http://via.placeholder.com/150x150" />
   </div>
-  <div class="small-item-title">
-    Название
-  </div>
-  <div class="small-item-description">
-    Описание. Небольшое чёткое но очень ёмкое описание товара
-  </div>
-  <div class="small-item-price">
-    1500 Руб
-  </div>
-  <div class="small-item-price-in-basket">
-    В корзину
+  <div class="small-item-container">
+    <div class="small-item-title">
+      {{productGroup.title}}
+    </div>
+    <div class="small-item-description">
+      {{productGroup.description}}
+    </div>
+    <div *ngIf="productGroup.price" class="small-item-price">
+      {{getProductGroupPriceStr()}}
+    </div>
   </div>
 </div>

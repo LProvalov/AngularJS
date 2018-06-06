@@ -18,6 +18,10 @@ import { BasketProductItemComponent } from './widgets/basket-product-item/basket
 import { BasketProductListComponent } from './widgets/basket-product-list/basket-product-list.component';
 import { FourLineItemComponent } from './widgets/four-line-item/four-line-item.component';
 import { SmallItemComponent } from './widgets/small-item/small-item.component';
+import { ProductGroupComponent } from './product-group/product-group.component';
+import { CatalogComponent } from './catalog/catalog.component';
+import { FourLineListComponent } from './widgets/four-line-list/four-line-list.component';
+import { MediumItemComponent } from './widgets/medium-item/medium-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { SmallItemComponent } from './widgets/small-item/small-item.component';
     BasketProductItemComponent,
     BasketProductListComponent,
     FourLineItemComponent,
-    SmallItemComponent
+    SmallItemComponent,
+    ProductGroupComponent,
+    CatalogComponent,
+    FourLineListComponent,
+    MediumItemComponent
   ],
   imports: [
     BrowserModule,

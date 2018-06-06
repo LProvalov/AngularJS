@@ -1,6 +1,5 @@
 <div class="four-line-item">
-    <app-small-item></app-small-item>
-    <app-small-item></app-small-item>
-    <app-small-item></app-small-item>
-    <app-small-item></app-small-item>
+    <app-small-item 
+        *ngFor="let item of getFourProductGroups()" 
+        [productGroup]="item"></app-small-item>
 </div>
