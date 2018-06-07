@@ -1,0 +1,17 @@
+<div class="carousel">
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let item of items">
+      <a routerLink={{item.route}}>
+        <img src="http://via.placeholder.com/500x250">
+      </a>
+      <div class="carousel-text-container">
+        <div class="carousel-title">
+          {{item.title}}
+        </div>
+        <div class="carousel-description">
+          {{item.description}}
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

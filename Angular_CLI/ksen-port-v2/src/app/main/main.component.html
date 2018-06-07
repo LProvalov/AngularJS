@@ -1,7 +1,8 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row justify-content-md-center">
-    <div class="col col-lg-10">
-      <app-big-left-img-item *ngIf="mainProduct" [product]="mainProduct"></app-big-left-img-item>
+    <div class="col">
+      <app-carousel *ngIf="carouselItems" [items]="carouselItems"></app-carousel>
+      <!--app-big-left-img-item *ngIf="mainProduct" [product]="mainProduct"></app-big-left-img-item-->
     </div>
   </div>
   <div class="row justify-content-md-center top-delimiter">

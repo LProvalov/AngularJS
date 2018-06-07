@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CombinedProduct, Product, IProduct } from './../models/models';
+import { CombinedProduct, Product, IProduct, CarouselModel } from './../models/models';
 
 import { ProductService } from './../services/product.service';
 
@@ -20,6 +20,26 @@ export class MainComponent implements OnInit {
   products: (IProduct)[];
   mainProduct: CombinedProduct;
   productGroups: ProductGroup[];
+  carouselItems: CarouselModel[] = [
+    {
+      title: "Наборы для акварели",
+      description: "Кисти, краски и бумага, всё что нужно чтобы начать творить!",
+      src: "",
+      route: null
+    },
+    {
+      title: "Каллиграфия",
+      description: "Очень просто начать заниматься чем то действительно прекрасным!",
+      src: "",
+      route: null
+    },
+    {
+      title: "Дизайн решает!",
+      description: "Дизайнерские товары по самым доступным ценам!",
+      src: "",
+      route: null
+    }
+  ];
 
   ngOnInit() {
     this.productService.getProduct(11).subscribe(item => {

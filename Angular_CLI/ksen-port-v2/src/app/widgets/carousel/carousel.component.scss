@@ -1,0 +1,26 @@
+@import "./../../../styles.scss";
+
+.carousel {
+    max-width: 56.5rem;
+    a{
+       img {
+        }
+    }
+    .carousel-text-container {
+        position: relative;
+        bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .carousel-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .carousel-description {
+            font-size: 2rem;
+            text-align: center;
+        }
+    }    
+}

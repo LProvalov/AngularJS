@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }    from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { ProductGroupComponent } from './product-group/product-group.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { FourLineListComponent } from './widgets/four-line-list/four-line-list.component';
 import { MediumItemComponent } from './widgets/medium-item/medium-item.component';
+import { CarouselComponent } from './widgets/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -43,12 +45,14 @@ import { MediumItemComponent } from './widgets/medium-item/medium-item.component
     ProductGroupComponent,
     CatalogComponent,
     FourLineListComponent,
-    MediumItemComponent
+    MediumItemComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
