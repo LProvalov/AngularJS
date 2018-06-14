@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }    from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { FourLineListComponent } from './widgets/four-line-list/four-line-list.component';
 import { MediumItemComponent } from './widgets/medium-item/medium-item.component';
 import { CarouselComponent } from './widgets/carousel/carousel.component';
+import { CarouselItemComponent } from './widgets/carousel/carousel-item/carousel-item.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +48,15 @@ import { CarouselComponent } from './widgets/carousel/carousel.component';
     CatalogComponent,
     FourLineListComponent,
     MediumItemComponent,
-    CarouselComponent
+    CarouselComponent,
+    CarouselItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

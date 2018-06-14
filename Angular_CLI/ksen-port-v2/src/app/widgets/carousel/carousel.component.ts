@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CarouselModel } from './../../models/models';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-carousel',
@@ -14,5 +15,4 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
