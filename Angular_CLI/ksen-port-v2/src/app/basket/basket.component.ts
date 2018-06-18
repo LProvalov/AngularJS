@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product, CombinedProduct, IProduct, BasketProduct } from './../models/models';
 import { BasketService } from './../services/basket.service';
+import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-basket',
@@ -9,11 +10,26 @@ import { BasketService } from './../services/basket.service';
 })
 export class BasketComponent implements OnInit {
 
+  private deliveryDisabled = true;
+  private paymentDisabled = true;
+  @ViewChild('ordertabset') tabset: NgbTabset;
+
   constructor(
     
   ) { }
 
   ngOnInit() {
 
+  }
+
+  nextStage(): void {
+    if(this.deliveryDisabled) {
+      this.deliveryDisabled = false;
+      this.tabset.select("deliveryid");
+    }
+    else if (this.paymentDisabled) {
+      this.paymentDisabled = false;
+      this.tabset.select("paymentsid");
+    }
   }
 }

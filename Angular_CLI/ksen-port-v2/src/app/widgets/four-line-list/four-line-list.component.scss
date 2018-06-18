@@ -3,8 +3,8 @@
 .four-line-list {
     display: grid;
     grid-template:
-    "title"
-    "itemlist";    
+    "title" auto
+    "itemlist" auto;    
 
     .four-line-list-title {
         grid-area: title;

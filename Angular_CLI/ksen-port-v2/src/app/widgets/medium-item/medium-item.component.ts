@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IProduct } from '../../models/models';
+import { BasketService } from '../../services/basket.service';
 
 @Component({
   selector: 'app-medium-item',
@@ -10,7 +11,9 @@ export class MediumItemComponent implements OnInit {
 
   @Input() item: IProduct;
 
-  constructor() { }
+  constructor(
+    private basketService: BasketService
+  ) { }
 
   ngOnInit() {
   }
@@ -19,4 +22,12 @@ export class MediumItemComponent implements OnInit {
     return `${this.item.price} руб.`
   }
 
+  onBasketClick(): void {
+    this.basketService.insertInBasket(this.item.id);
+  }
+
+  isInBasket(): boolean {
+    if (this.item) return this.basketService.isInBasketList(this.item.id);
+    return false;
+  }
 }
