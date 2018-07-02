@@ -17,8 +17,8 @@ class PictureService{
         return new Promise<IPicture>( (resolve, reject) => {
             PictureModel.findPictureById(id).then( (res) => {
                 resolve(res);
-            }, (resaon) => {
-                resolve(null)
+            }, (reason) => {
+                resolve(null);
             });
         });
     }

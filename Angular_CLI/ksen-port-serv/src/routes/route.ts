@@ -1,4 +1,7 @@
 import { NextFunction, Request, Response } from "express";
+import * as Config from 'config';
+
+var appConfig: any = Config.get('Application');
 
 export class BaseRoute{
     protected title: string;

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ImageService {
 
-  private imageUrlBase: string = "http://via.placeholder.com/";
+  private imageUrlBase: string = "http://localhost:8100/api/picture";
 
   constructor(
     private http: HttpClient
@@ -15,7 +15,7 @@ export class ImageService {
 
   public getImage(id: number): Observable<Blob> {
     return this.http
-      .get(`${this.imageUrlBase}/800x500`, {
+      .get(`${this.imageUrlBase}/${id}`, {
         responseType: "blob"
       });
   }
