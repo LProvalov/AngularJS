@@ -1,7 +1,7 @@
 <div class="medium-item">
   <div class="medium-item-img">
-    <div class="medium-item-lable">
-      Новинка
+    <div class="medium-item-lable" *ngIf="isLableVisible()">
+      {{getLabelText()}}
     </div>
     <img src="http://via.placeholder.com/250x250" />
   </div>
@@ -15,15 +15,11 @@
     <div class="medium-item-price">
       {{getProductPriceStr()}}
     </div>
-    <div class="medium-item-in-basket"
-      *ngIf="!isInBasket()" 
-      (click)="onBasketClick()">
+    <div class="medium-item-in-basket" *ngIf="!isInBasket()" (click)="onBasketClick()">
       В корзину
     </div>
-    <div *ngIf="isInBasket()">
-      <div class="toBascketLink">
-        <a routerLink="/basket">К покупкам</a>
-      </div>
+    <div *ngIf="isInBasket()" class="toBascketLink">
+      <a routerLink="/basket">К покупкам</a>
     </div>
   </div>
 </div>

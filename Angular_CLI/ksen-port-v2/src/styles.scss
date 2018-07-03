@@ -8,6 +8,9 @@ $blii-main-border-radius: 10px;
 $blii-main-background: #eee;
 $price-background: #99d;
 $price-background-hover: #aaf;
+$pinkcolor: #ff5063;
+$skycolor: rgb(30, 200, 252);
+$white: #fff;
 $blii-title-font: kelly slab,fantasy;
 $blii-description-font: futura-lt-w01-light, sans-serif;
 
@@ -35,4 +38,13 @@ $large: 1024px;
     @else if $media == wide-screens {
         @media only screen and (min-width: $large) { @content; }
     }
+}
+
+
+
+@font-face { 
+    font-family: "Open-Sans-Regular"; 
+    src: url("/assets/fonts/OpenSans-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
 }

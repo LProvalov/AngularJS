@@ -18,8 +18,8 @@ import { BigLeftImgItemComponent } from './widgets/big-left-img-item/big-left-im
 import { BasketLableComponent } from './widgets/basket-lable/basket-lable.component';
 import { BasketProductItemComponent } from './widgets/basket-product-item/basket-product-item.component';
 import { BasketProductListComponent } from './widgets/basket-product-list/basket-product-list.component';
-import { FourLineItemComponent } from './widgets/four-line-item/four-line-item.component';
-import { SmallItemComponent } from './widgets/small-item/small-item.component';
+import { FourLineComponent } from './widgets/four-line/four-line.component';
+import { GroupItemComponent } from './widgets/group-item/group-item.component';
 import { ProductGroupComponent } from './product-group/product-group.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { FourLineListComponent } from './widgets/four-line-list/four-line-list.component';
@@ -42,8 +42,8 @@ import { CarouselItemComponent } from './widgets/carousel/carousel-item/carousel
     BasketLableComponent,
     BasketProductItemComponent,
     BasketProductListComponent,
-    FourLineItemComponent,
-    SmallItemComponent,
+    FourLineComponent,
+    GroupItemComponent,
     ProductGroupComponent,
     CatalogComponent,
     FourLineListComponent,

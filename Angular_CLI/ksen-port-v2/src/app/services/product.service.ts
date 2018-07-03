@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-
 import { Product, CombinedProduct, IProduct } from './../models/models';
 import { PRODUCTS, PRODUCT_GROUP } from './../products';
 import { ProductGroup } from '../models/productGroup';

@@ -22,6 +22,14 @@ export class MediumItemComponent implements OnInit {
     return `${this.item.price} руб.`
   }
 
+  isLableVisible(): boolean {
+    return this.item.isLabelVisible;
+  }
+
+  getLabelText(): string {
+    return this.item.labelText;
+  }
+
   onBasketClick(): void {
     this.basketService.insertInBasket(this.item.id);
   }

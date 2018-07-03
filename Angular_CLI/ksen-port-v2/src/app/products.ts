@@ -1,13 +1,15 @@
 import { Product, CombinedProduct } from './models/models';
 import { ProductGroup } from './models/productGroup';
 
-export const PRODUCTS: (Product | CombinedProduct)[] = [
+const LABEL_NEW = 'Новинка';
+
+export const PRODUCTS: Product[] = [
     new Product(
         1,
         "Простой продукт 1 NewProduct",
         "Описание простого продукта New Product номер 1. Продукт обладает вот такими вот качествами и создан специально для вот такого вот.",
         1500
-    ),
+    ).setLable(LABEL_NEW),
     new Product(
         2,
         "Простой продукт 2 Sample product",
@@ -19,39 +21,14 @@ export const PRODUCTS: (Product | CombinedProduct)[] = [
         "Простой продукт 3 Product with length name like this: 'WWwwwWWWWwwWwwWwwwwwwwWwwww'",
         "Описание простого продукта Product with length name номер 3. Продукт обладает вот такими вот качествами и создан специально для вот такого вот.",
         2000
-    ),
+    ).setLable(LABEL_NEW),
     new Product(
         4,
          "Простой продукт 4 Popular Product",
          "Описание простого продукта New Product номер 4. Продукт обладает вот такими вот качествами и создан специально для вот такого вот.",
          1750,
-    ),
-    new CombinedProduct(
-        11,
-        "Простой продукт 5 Combined Product",
-        "Описание простого продукта Combined Product номер 4. Продукт обладает вот такими вот качествами и создан специально для вот такого вот.",
-        4250,
-        [
-            "Кисточка беличья SuperBrush",
-            "Бумага акварельня watercolor papper",
-            "Акварель 'Ленинград' 12 цветов"
-        ],
-        [
-            {
-                id: 3,
-                title: "Простой продукт 3 Product with length name like this: 'WWwwwWWWWwwWwwWwwwwwwwWwwww'",
-                description: "Описание простого продукта Product with length name номер 3. Продукт обладает вот такими вот качествами и создан специально для вот такого вот.",
-                price: 2000
-            },
-            {
-                id: 4,
-                title: "Простой продукт 4 Popular Product",
-                description: "Описание простого продукта New Product номер 4. Продукт обладает вот такими вот качествами и создан специально для вот такого вот.",
-                price: 1750
-            }
-        ]
-    )
-]
+    )    
+];
 
 export const PRODUCT_GROUP: ProductGroup[] = [
         new ProductGroup(1, "Каллиграфия", "Перья, кисти, тушь и чернила", 250),

@@ -27,6 +27,7 @@
             font-size: 1.2rem;
     
             margin: 1rem;
+            padding: 0.2rem 0.4rem;
             background: lightseagreen;
         }
 
@@ -53,6 +54,14 @@
         justify-content: center;
         align-content: stretch;
         padding: 1rem 1.5rem 1rem 1.5rem;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-decoration: none;
 
         @include respond-to(handhelds) { 
             width: calc(#{$image-min-width} / 3 * 2);
@@ -82,7 +91,36 @@
     
         }
         .medium-item-in-basket {
-    
+            font-size: 1.4rem;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #c1c1c1;
+            border-radius: 5px;
+            outline: none;
+
+            -webkit-transition: background-color 0.5s ease-out;
+            -moz-transition: background-color 0.5s ease-out;
+            -o-transition: background-color 0.5s ease-out;
+            transition: background-color 0.5s ease-out;
+
+            &:hover {
+                background-color: $pinkcolor;
+            }
+        }
+
+        .toBascketLink {
+            font-size: 1.4rem;
+            text-align: center;
+            padding: 0.5rem 1.5rem;
+            //border: 1px solid #c1c1c1;
+            //border-radius: 5px;
+            outline: none;
+            &:hover {
+                a{
+                    text-decoration: none;
+                }
+            }
         }
     }    
 }
