@@ -1,1 +1,6 @@
-Keys/
+#Ignore everything
+*
+
+# Except this
+!.gitignore
+!Angular_CLI
