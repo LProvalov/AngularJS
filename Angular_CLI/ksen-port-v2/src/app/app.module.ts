@@ -6,26 +6,26 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MainComponent } from './main/main.component';
-import { AboutComponent } from './about/about.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { TopLineComponent } from './top-line/top-line.component';
-import { DeliveryComponent } from './delivery/delivery.component';
-import { FooterComponent } from './footer/footer.component';
-import { BasketComponent } from './basket/basket.component';
-import { MainNavigationComponent } from './main-navigation/main-navigation.component';
-import { BigLeftImgItemComponent } from './widgets/big-left-img-item/big-left-img-item.component';
-import { BasketLableComponent } from './widgets/basket-lable/basket-lable.component';
-import { BasketProductItemComponent } from './widgets/basket-product-item/basket-product-item.component';
-import { BasketProductListComponent } from './widgets/basket-product-list/basket-product-list.component';
-import { FourLineComponent } from './widgets/four-line/four-line.component';
-import { GroupItemComponent } from './widgets/group-item/group-item.component';
-import { ProductGroupComponent } from './product-group/product-group.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { FourLineListComponent } from './widgets/four-line-list/four-line-list.component';
-import { MediumItemComponent } from './widgets/medium-item/medium-item.component';
-import { CarouselComponent } from './widgets/carousel/carousel.component';
-import { CarouselItemComponent } from './widgets/carousel/carousel-item/carousel-item.component';
+import { MainComponent } from './components/pages/main/main.component';
+import { AboutComponent } from './components/pages/about/about.component';
+import { ContactsComponent } from './components/pages/contacts/contacts.component';
+import { TopLineComponent } from './components/widgets/top-line/top-line.component';
+import { DeliveryComponent } from './components/pages/delivery/delivery.component';
+import { FooterComponent } from './components/widgets/footer/footer.component';
+import { BasketComponent } from './components/pages/basket/basket.component';
+import { MainNavigationComponent } from './components/widgets/main-navigation/main-navigation.component';
+import { BigLeftImgItemComponent } from './components/widgets/big-left-img-item/big-left-img-item.component';
+import { BasketLableComponent } from './components/widgets/basket-lable/basket-lable.component';
+import { BasketProductItemComponent } from './components/widgets/basket-product-item/basket-product-item.component';
+import { BasketProductListComponent } from './components/widgets/basket-product-list/basket-product-list.component';
+import { FourLineComponent } from './components/widgets/four-line/four-line.component';
+import { GroupItemComponent } from './components/widgets/group-item/group-item.component';
+import { ProductGroupComponent } from './components/widgets/product-group/product-group.component';
+import { CatalogComponent } from './components/widgets/catalog/catalog.component';
+import { FourLineListComponent } from './components/widgets/four-line-list/four-line-list.component';
+import { MediumItemComponent } from './components/widgets/medium-item/medium-item.component';
+import { CarouselComponent } from './components/widgets/carousel/carousel.component';
+import { CarouselItemComponent } from './components/widgets/carousel/carousel-item/carousel-item.component';
 
 @NgModule({
   declarations: [

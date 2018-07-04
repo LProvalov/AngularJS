@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MainComponent } from './main/main.component';
-import { AboutComponent } from './about/about.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { DeliveryComponent } from './delivery/delivery.component';
-import { BasketComponent } from './basket/basket.component';
-import { CatalogComponent } from './catalog/catalog.component';
+import { MainComponent, AboutComponent, ContactsComponent, 
+  DeliveryComponent, BasketComponent, CatalogComponent } from './exports';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
