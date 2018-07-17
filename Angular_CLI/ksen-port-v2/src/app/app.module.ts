@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,6 +26,9 @@ import { FourLineListComponent } from './components/widgets/four-line-list/four-
 import { MediumItemComponent } from './components/widgets/medium-item/medium-item.component';
 import { CarouselComponent } from './components/widgets/carousel/carousel.component';
 import { CarouselItemComponent } from './components/widgets/carousel/carousel-item/carousel-item.component';
+
+import { ProductsDataProviderToken } from './exports';
+import { ProductsEndpointDataProvider } from './dataproviders/products/products-endpoint.dataprovider';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { CarouselItemComponent } from './components/widgets/carousel/carousel-it
     NgbModule.forRoot(),
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: ProductsDataProviderToken, useClass: ProductsEndpointDataProvider }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

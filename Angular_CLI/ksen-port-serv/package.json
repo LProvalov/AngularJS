@@ -7,8 +7,6 @@
     "Socket": "app.js"
   },
   "dependencies": {
-    "@types/busboy": "0.2.3",
-    "@types/config": "0.0.32",
     "async": "2.1.4",
     "body-parser": "1.17.2",
     "busboy": "0.2.14",
@@ -17,6 +15,7 @@
     "errorhandler": "1.5.0",
     "express": "4.15.3",
     "ie-shim": "0.1.0",
+    "lodash": "4.17.10",
     "mongodb": "2.2.30",
     "mongoose": "4.11.1",
     "reflect-metadata": "0.1.10",
@@ -35,7 +34,10 @@
     "@types/mongoose": "4.7.18",
     "@types/node": "8.0.7",
     "@types/socket.io": "1.4.29",
-    "@types/socket.io-client": "1.4.29"
+    "@types/socket.io-client": "1.4.29",
+    "@types/busboy": "0.2.3",
+    "@types/config": "0.0.32",
+    "@types/lodash": "4.14.111"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

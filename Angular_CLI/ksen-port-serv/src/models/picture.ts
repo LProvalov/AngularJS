@@ -63,7 +63,7 @@ export class PictureModel {
                     resolve(result);
                 });
             }
-        );       
+        );
     }
 
     static createPicture(picture: { title: string, description: string, path: string}): Promise<IPicture> {
