@@ -1,0 +1,13 @@
+<div class="basket-list">
+  <ul>
+    <li *ngFor="let item of getBasketList()">
+      <app-basket-product-item [id]="item.productId" [count]="item.count"></app-basket-product-item>
+    </li>
+  </ul>
+  <div class="basket-total-price">
+    {{getTotalPrise()}}
+  </div>
+  <!--div class="make-order">
+    Оформить заказ
+  </div-->
+</div>

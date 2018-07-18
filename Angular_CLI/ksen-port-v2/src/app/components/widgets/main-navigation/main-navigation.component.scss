@@ -1,0 +1,42 @@
+@import "./../../../../styles.scss";
+
+#main-navigation {
+    font-family: "Open-Sans-Regular";
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    @include respond-to(handhelds) { 
+        height: 40px;
+    }
+    @include respond-to(medium-screens) { 
+        height: 50px;
+    }
+    .nav{
+        display: flex;
+        align-items: center;
+        li{
+            a {
+                padding: 20px 30px;
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+                @include respond-to(handhelds) { 
+                    font-size: 1.2rem;
+                    letter-spacing: 1px;
+                    padding: 1rem 1.5rem;
+                }
+                @include respond-to(medium-screens) { 
+                    font-size: 1.2rem;
+                    letter-spacing: 1px;
+                    padding: 1.8rem 2.5rem;
+                }
+                background: transparent;
+                text-decoration: none;
+                text-transform: uppercase;
+                &:hover {
+                    color: $pinkcolor
+                }
+            }
+        }        
+    }
+}

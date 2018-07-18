@@ -1,0 +1,37 @@
+@import "./../../../../styles.scss";
+$top-line-background: #444;
+$top-line-textcolor: #fff;
+
+#top-line {
+    font-family: $font-main;
+    background: $top-line-background;
+    color: $top-line-textcolor;
+    height: 68px;
+
+    .left-side-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .logo {
+         margin: 10px;
+         height: 48px;
+         font-weight: bold;
+    }
+
+    .logo-utp {
+        display: flex;
+        align-items: center;
+        font-style: italic;
+        font-size: 10pt;
+        height: 68px;
+    }
+
+    .right-side-container {
+        display: flex;
+        flex-direction:  row;
+        justify-content: flex-end; 
+    }
+}

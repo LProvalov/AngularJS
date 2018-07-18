@@ -1,0 +1,8 @@
+@import "./../../../../styles.scss";
+
+.four-line-item{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}

@@ -1,0 +1,20 @@
+<app-carousel *ngIf="carouselItems" [items]="carouselItems"></app-carousel>
+<div class="container">
+  <!--div class="row justify-content-md-center">
+    <div class="col">
+      
+      <app-big-left-img-item *ngIf="mainProduct" [product]="mainProduct"></app-big-left-img-item>
+    </div>
+  </div-->
+  <div class="row justify-content-md-center top-delimiter">
+    <div class="col col-lg-10">
+      <app-four-line *ngIf="productGroups" [productGroups]="productGroups"></app-four-line>
+    </div>
+  </div>
+  <div class="row justify-content-md-center top-delimiter">
+    <div class="col col-lg-10">
+      <app-four-line-list *ngIf="products" [items]="products" [title]="'Акварелька'">
+      </app-four-line-list>
+    </div>
+  </div>
+</div>

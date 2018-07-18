@@ -1,0 +1,91 @@
+@import "./../../../../styles.scss";
+
+$image-min-width: 16rem;
+$image-height: 16rem;
+$item-color: #eee;
+$item-highlight-color: #ddd; 
+$item-shadow-color: #555;
+
+.small-item {
+    display: grid;
+    grid-template:
+        "img"
+        "title"
+        "description";
+    padding: 1rem;
+    background: $item-color;
+    height: 100%;
+    
+    -webkit-transition: box-shadow 0.5s ease-out;
+    -moz-transition: box-shadow 0.5s ease-out;
+    -o-transition: box-shadow 0.5s ease-out;
+    transition: box-shadow 0.5s ease-out;
+
+    -webkit-transition: background 0.5s ease-out;
+    -moz-transition: background 0.5s ease-out;
+    -o-transition: background 0.5s ease-out;
+    transition: background 0.5s ease-out;
+
+    &:hover {
+        background: $item-highlight-color;
+        box-shadow: 0 0 0.5rem $item-shadow-color;
+    }
+
+    .small-item-img {
+        grid-area: img;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: $image-min-width;
+            height: $image-height;
+            @include respond-to(handhelds) { 
+                width: calc(#{$image-min-width} / 3 * 2);
+                height: calc(#{$image-height} / 3 * 2);
+            }
+            @include respond-to(medium-screens) { 
+                width: calc(#{$image-min-width}); 
+                height: calc(#{$image-height});
+            }
+            //@include respond-to(wide-screens) { }
+            justify-content: stretch;
+        }
+    }
+
+    .small-item-container {
+        width: $image-min-width;
+        @include respond-to(handhelds) { 
+            width: calc(#{$image-min-width} / 3 * 2);
+        }
+        @include respond-to(medium-screens) { 
+            width: calc(#{$image-min-width});
+        }
+
+        .small-item-title {
+            grid-area: title;
+            display: flex;
+            justify-content: center;
+            margin-top: 0.5rem;
+            font-size: 2rem;
+            @include respond-to(medium-screens) { 
+                font-size: 1.7rem;
+            }
+            @include respond-to(handhelds) { 
+                font-size: 1.5rem;
+            }
+            text-align: center;
+            font-weight: bold;
+        }
+    
+        .small-item-description {
+            grid-area: description;
+            display: none;
+        }
+    
+        .small-item-price {
+            display: flex;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+    }
+}
