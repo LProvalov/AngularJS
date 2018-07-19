@@ -1,7 +1,7 @@
 import * as http from "http";
 import * as socketIo from "socket.io";
 import * as url from 'url';
-import { UserModel } from './../models/user';
+import { UserModel } from '../models/user';
 
 export class BaseSocketServer {
     public static create(socket: SocketIO.Socket, io: SocketIO.Server){

@@ -1,18 +1,28 @@
 import * as mongoose from 'mongoose';
-import { RepositoryBase } from './../providers/repositoryBase';
+import { RepositoryBase } from '../providers/repositoryBase';
 import { resolve } from 'dns';
 
 var Schema = mongoose.Schema;
 export interface IBaseModel<T> {
     findById(id: string): Promise<T>;
     getPage(pageSize: number, pageNumber: number): Promise<T[]>;
+    create(object: T): Promise<T>;
+    update(object: T): Promise<boolean>;
+    delete(object: T): Promise<boolean>;
+    readById(id: string): Promise<T>;
+    getAll(): Promise<T[]>;
+    getPageCond(pageSize: number, pageNumber: number, cond: object): Promise<T[]>;
+    count(): Promise<number>;
 }
 export class BaseModel<T extends mongoose.Document> implements IBaseModel<T>{
     //private _documnet: mongoose.Document;
-    private _repo: RepositoryBase<T>;
+    private _repo: RepositoryBase<T> = null;
 
-    constructor(/*document: mongoose.Document,*/ repo: RepositoryBase<T>) {
+    constructor(/*document: mongoose.Document, repo: RepositoryBase<T>*/) {
         //this._documnet = document;
+    }
+
+    public initialize(repo: RepositoryBase<T>) {
         this._repo = repo;
     }
 

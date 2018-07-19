@@ -1,5 +1,5 @@
-import { PictureModel, IPicture } from './../models/picture';
-import { PictureMetainfo } from './../models/pictureApi';
+import { PictureModel, IPicture } from '../models/picture';
+import { PictureMetainfo } from '../api/validators/pictureValidators';
 import * as Stream from 'stream';
 import * as FS from 'fs';
 

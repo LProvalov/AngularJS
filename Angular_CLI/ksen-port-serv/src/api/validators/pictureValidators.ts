@@ -1,4 +1,4 @@
-import { IValidator } from "./../utils/IValidator";
+import { IValidator } from "../../utils/IValidator";
 export class PictureGetQuery {
     id: string;
 }

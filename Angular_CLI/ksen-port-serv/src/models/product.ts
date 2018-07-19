@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { RepositoryBase } from './../providers/repositoryBase';
+import { RepositoryBase } from '../providers/repositoryBase';
 import { BaseModel, IBaseModel } from './baseModel';
 
 var Schema = mongoose.Schema;
@@ -9,9 +9,10 @@ export interface IProduct extends mongoose.Document {
     description: string;
     price: number;
     label: boolean;
-    lebelMessage: string;
+    labelMessage: string;
     count: number;
     pictureId: string;
+    type: string;
 }
 
 let _productSchema = new Schema({
@@ -49,6 +50,11 @@ let _productSchema = new Schema({
         type: String,
         required: true,
         default: ""
+    },
+    type: {
+        type: String,
+        required: true,
+        default: ""
     }
 });
 
@@ -60,10 +66,11 @@ export class ProductRepository extends RepositoryBase<IProduct> {
 }
 Object.seal(ProductRepository);
 
-export class ProductModel extends BaseModel<IProduct> implements IBaseModel<IProduct>  {
+class ProductModelClass extends BaseModel<IProduct> implements IBaseModel<IProduct>  {
 
     constructor(){
-        super(new ProductRepository());
+        super();
     }
 }
-Object.seal(ProductModel);
+Object.seal(ProductModelClass);
+export const ProductModel: ProductModelClass = new ProductModelClass();

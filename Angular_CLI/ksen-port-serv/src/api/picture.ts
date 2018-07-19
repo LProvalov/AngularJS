@@ -7,9 +7,9 @@ import {
     validatorPictures as PicturesQueryValidator,
     validatorPictureMetainfo as PictureMetainfoValidator,
     validatorPictureUpdateMetainfo as PictureUpdateMetainfoValidator
-} from "./../models/pictureApi";
-import { service as PictureService } from "./../services/pictureService";
-import { IPicture } from "./../models/picture";
+} from "./validators/pictureValidators";
+import { service as PictureService } from "../services/pictureService";
+import { IPicture } from "../models/picture";
 
 export class PictureApi extends ApiBase {
 

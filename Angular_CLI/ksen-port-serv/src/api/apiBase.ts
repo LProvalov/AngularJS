@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IValidator } from "./../utils/IValidator";
+import { IValidator } from "../utils/IValidator";
 export class ApiBase {
     protected static apiUrl: string = "/api";
 

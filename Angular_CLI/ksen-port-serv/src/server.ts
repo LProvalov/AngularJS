@@ -5,11 +5,13 @@ import * as socketIo from "socket.io";
 import * as mongoose from "mongoose";
 import errorHandler = require("errorhandler");
 
-import { IndexRoute } from "./routes/index";
-import { PictureApi } from "./api/apiAll";
+import { IndexRoute } from "./routes";
+import { PictureApi, ProductApi } from "./api/apiAll";
 import { BaseSocketServer } from "./socket/socket";
 
 import * as Config from 'config';
+import { ProductModel, ProductRepository } from "./models/product";
+import { OrderModel, OrderRepository } from "./models/order";
 
 var appConfig: any = Config.get('Application');
 
@@ -58,6 +60,10 @@ export class Server {
                 "socketOptions": { "keepAlive": 1 }
             }
         });
+        mongoose.connection.on('connected', () => {
+            ProductModel.initialize(new ProductRepository());
+            OrderModel.initialize(new OrderRepository());
+        });
     }
 
     private createHttpServer() {
@@ -73,6 +79,7 @@ export class Server {
 
     private api() {
         PictureApi.create(this.app);
+        ProductApi.create(this.app);
     }
 
     private sockets(): void {

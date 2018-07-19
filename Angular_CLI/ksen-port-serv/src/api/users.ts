@@ -1,6 +1,6 @@
 import { Application, Request, Response } from "express";
 import { ApiBase } from "./apiBase";
-import { UserModel } from "./../models/user";
+import { UserModel } from "../models/user";
 
 export class UsersApi extends ApiBase {
     public static create(app: Application){

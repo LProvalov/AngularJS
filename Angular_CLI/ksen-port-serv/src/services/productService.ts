@@ -1,14 +1,34 @@
 
-import { IProduct, ProductModel } from './../models/product';
+import { IProduct, ProductModel } from '../models/product';
 import { IBaseModel } from '../models/baseModel';
 
 class ProductService {
-    async ReadProductPagination(pageSize: number, pageCount: number): Promise<IProduct[]> {
-        return await (ProductModel as IBaseModel<IProduct>).getPage(pageSize, pageCount);
+
+    async CreateProduct(title: string, description: string, price: number, label: boolean,
+        labelMessage: string, count: number, pictureId: string): Promise<void> {
+        await ProductModel.create(
+            {
+                title: title,
+                description:description,
+                price: price,
+                label: label,
+                labelMessage: labelMessage,
+                count: count,
+                pictureId: pictureId
+            } as IProduct
+        );
+    }
+
+    async ReadProductPagination(pageSize: number, pageNumber: number): Promise<IProduct[]> {
+        return await ProductModel.getPage(pageSize, pageNumber);
+    }
+
+    async ReadProduct(productId: string): Promise<IProduct> {
+        return await ProductModel.readById(productId);
     }
 
     async CountProduct(): Promise<number> {
-
+        return await ProductModel.count();
     }
 }
 
