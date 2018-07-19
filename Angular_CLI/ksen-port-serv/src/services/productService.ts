@@ -19,6 +19,10 @@ class ProductService {
         );
     }
 
+    async UpdateProduct(product: IProduct): Promise<boolean> {
+        return await ProductModel.update(product);
+    }
+
     async ReadProductPagination(pageSize: number, pageNumber: number): Promise<IProduct[]> {
         return await ProductModel.getPage(pageSize, pageNumber);
     }

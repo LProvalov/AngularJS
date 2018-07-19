@@ -2,46 +2,60 @@ import { IOrder, OrderModel } from '../models/order';
 import { service as ProductService } from './productService';
 import { resolve } from 'url';
 
-interface IProductRemnants {
+export interface IProductRemnants {
     id: string,
     remnants: number
+}
+
+export interface CreateOrderResult {
+    success: boolean;
+    remnants?: IProductRemnants[]
 }
 
 class OrderService {
 
     async CreateOrder(products: { id: string, count: number }[], address: string,
-        fio: string, comments: string): Promise<void> {
-
-        this.CheckProductRemnants(products).then(
-            (result: boolean) => {
-                await OrderModel.create({
-                    products: products,
-                    address: address,
-                    fio: fio,
-                    comments: comments
-                } as IOrder);
-            },
-            (reason) => {
-
-            });        
+        fio: string, comments: string): Promise<CreateOrderResult> {
+        // this method should complete in one transaction
+        let remnants = await this.CheckProductRemnants(products);
+        if (remnants.length > 0) {
+            return {
+                success: false,
+                remnants: remnants
+            } as CreateOrderResult;
+        } else {
+            await OrderModel.create({
+                products: products,
+                address: address,
+                fio: fio,
+                comments: comments
+            } as IOrder);
+            await this.UpdateProductRemnants(products);
+        }
+        return { success: true } as CreateOrderResult;
     }
-    
-    async CheckProductRemnants(products: { id: string, count: number }[]): Promise<boolean> {
-        return new Promise<boolean>(async (resolve, reject) => {
-            let rejectResponse: IProductRemnants[] = [];
-            for (let i = 0; i < products.length; i++) {
-                let product = await ProductService.ReadProduct(products[i].id);
-                let diff = products[i].count - product.count;
-                if (diff > 0) {
-                    rejectResponse.push({ 
-                        id: product.id, 
-                        remnants: diff
-                    } as IProductRemnants);
-                }
+
+    private async CheckProductRemnants(products: { id: string, count: number }[]): Promise<IProductRemnants[]> {
+        let remnants: IProductRemnants[] = [];
+        for (let i = 0; i < products.length; i++) {
+            let product = await ProductService.ReadProduct(products[i].id);
+            let diff = products[i].count - product.count;
+            if (diff > 0) {
+                remnants.push({
+                    id: product.id,
+                    remnants: diff
+                } as IProductRemnants);
             }
-            if (rejectResponse.length > 0) reject(rejectResponse);
-            resolve(true);
-        });
+        }
+        return remnants;
+    }
+
+    private async UpdateProductRemnants(products: { id: string, count: number }[]): Promise<void> {
+        for (let i = 0; i < products.length; i++) {
+            let product = await ProductService.ReadProduct(products[i].id);
+            product.count -= products[i].count;
+            await ProductService.UpdateProduct(product);
+        }        
     }
 }
 
