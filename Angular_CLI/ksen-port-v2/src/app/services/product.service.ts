@@ -1,16 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Product, CombinedProduct, IProduct } from './../models/models';
 import { PRODUCTS, PRODUCT_GROUP } from './../products';
 import { ProductGroup } from '../models/productGroup';
+import { ProductsDataProviderToken, ProductsDataProvider } from '../exports';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(@Inject(ProductsDataProviderToken) private productsDataProvider: ProductsDataProvider ) { 
+
+  }
 
   getProducts(): Observable<IProduct[]> {
     return of(PRODUCTS);
