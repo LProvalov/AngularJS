@@ -1,15 +1,12 @@
-import {} from './../exports';
+import { } from './../exports';
 import { Response, RequestOptionsArgs } from "@angular/http";
 import { Observable } from 'rxjs';
 
-export class BaseEndpointDataProvider {
-
-    constructor(){
-
-    }
+export class BaseDataProvider {
+    constructor() { }
 
     protected getApiUrl(path: string): string {
-        return "" + path;
+        return "http://localhost:8100/api/" + path;
     }
 
     protected getResponseBody(res: Response): any {
@@ -19,5 +16,10 @@ export class BaseEndpointDataProvider {
     protected handleHttpError(error: Response) {
         console.log(error);
         let errResponse: Error = this.getResponseBody(error);
+    }
+
+    protected getAuthOptions(): RequestOptionsArgs {
+        let options: RequestOptionsArgs = {};
+        return options;
     }
 }

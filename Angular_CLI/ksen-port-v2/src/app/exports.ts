@@ -1,8 +1,14 @@
+
 //services
+export { HttpService } from './services/network/http.service';
 export { ComponentsDisplayService } from './services/components-display.service';
 export { BasketService } from './services/basket.service';
 export { ImageService } from './services/image.service';
 export { ProductService } from './services/product.service';
+
+//dataproviders
+export { ProductsDataProvider } from './dataproviders/products/products.dataprovider';
+export * from './dataproviders/products/iproduct.dataprovider';
 
 //components
 export { MainComponent } from './components/pages/main/main.component';
@@ -26,6 +32,3 @@ export { MainNavigationComponent } from './components/widgets/main-navigation/ma
 export { MediumItemComponent } from './components/widgets/medium-item/medium-item.component';
 export { ProductGroupComponent } from './components/widgets/product-group/product-group.component';
 
-//dataproviders
-export { ProductsEndpointDataProvider} from './dataproviders/products/products-endpoint.dataprovider';
-export * from './dataproviders/products/products.dataprovider';

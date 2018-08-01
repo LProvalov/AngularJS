@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,8 +29,9 @@ import { MediumItemComponent } from './components/widgets/medium-item/medium-ite
 import { CarouselComponent } from './components/widgets/carousel/carousel.component';
 import { CarouselItemComponent } from './components/widgets/carousel/carousel-item/carousel-item.component';
 
-import { ProductsDataProviderToken } from './exports';
-import { ProductsEndpointDataProvider } from './dataproviders/products/products-endpoint.dataprovider';
+import { HttpService } from './services/network/http.service';
+import { ProductDataProviderToken } from './dataproviders/products/iproduct.dataprovider';
+import { ProductsDataProvider } from './dataproviders/products/products.dataprovider';
 
 @NgModule({
   declarations: [
@@ -59,10 +62,12 @@ import { ProductsEndpointDataProvider } from './dataproviders/products/products-
     AppRoutingModule,
     FormsModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   providers: [
-    { provide: ProductsDataProviderToken, useClass: ProductsEndpointDataProvider }
+    HttpService,
+    { provide: ProductDataProviderToken, useClass: ProductsDataProvider }
   ],
   bootstrap: [AppComponent]
 })

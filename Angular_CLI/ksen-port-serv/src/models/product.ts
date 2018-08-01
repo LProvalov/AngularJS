@@ -12,7 +12,8 @@ export interface IProduct extends mongoose.Document {
     labelMessage: string;
     count: number;
     pictureId: string;
-    type: string;
+    descriptionPicIds: string[];
+    groupId: string;
 }
 
 let _productSchema = new Schema({
@@ -51,7 +52,12 @@ let _productSchema = new Schema({
         required: true,
         default: ""
     },
-    type: {
+    descriptionPicIds: {
+        type: [String],
+        required: true,
+        default: []
+    },
+    groupId: {
         type: String,
         required: true,
         default: ""
@@ -67,8 +73,7 @@ export class ProductRepository extends RepositoryBase<IProduct> {
 Object.seal(ProductRepository);
 
 class ProductModelClass extends BaseModel<IProduct> implements IBaseModel<IProduct>  {
-
-    constructor(){
+    constructor() {
         super();
     }
 }

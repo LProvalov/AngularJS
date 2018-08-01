@@ -1,22 +1,26 @@
 
 export class Product {
-    id: number;
+    _id: string;
     title: string;
     description: string;
     price: number;
+    groupId: string;
+    descriptionPicIds: string[];
+    pictureId: string;
+    count: number;
 
-    public isLabelVisible: boolean = false;
-    public labelText: string;
+    public label: boolean = false;
+    public labelMessage: string;
 
     public setLable(labelText: string): Product {
-        this.isLabelVisible = true;
-        this.labelText = labelText;
+        this.label = true;
+        this.labelMessage = labelText;
         return this;
     }
 
-    constructor(id: number, title: string, desc: string, price: number)
+    constructor(id: string, title: string, desc: string, price: number)
     {
-        this.id = id;
+        this._id = id;
         this.title = title;
         this.description = desc;
         this.price = price;

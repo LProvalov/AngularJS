@@ -23,19 +23,19 @@ export class MediumItemComponent implements OnInit {
   }
 
   isLableVisible(): boolean {
-    return this.item.isLabelVisible;
+    return this.item.label;
   }
 
   getLabelText(): string {
-    return this.item.labelText;
+    return this.item.labelMessage;
   }
 
   onBasketClick(): void {
-    this.basketService.insertInBasket(this.item.id);
+    this.basketService.insertInBasket(this.item._id);
   }
 
   isInBasket(): boolean {
-    if (this.item) return this.basketService.isInBasketList(this.item.id);
+    if (this.item) return this.basketService.isInBasketList(this.item._id);
     return false;
   }
 }
