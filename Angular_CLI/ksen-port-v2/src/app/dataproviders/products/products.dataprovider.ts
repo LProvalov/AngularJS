@@ -23,12 +23,12 @@ export class ProductsDataProvider extends BaseDataProvider implements IProductDa
         return this.httpService.get(this.getApiUrl(`products`), options)
             .map((response: any) => {
                 console.log(`MAP: ${JSON.stringify(response)}`);
-                response = response.body as Product[];
-                return response;
+                console.log(`${JSON.stringify( response.body as Product[])}`);
+                return response.body as Product[];
             })
             .do((response: any) => {
-                console.log(`DO: ${JSON.stringify(response.body)}`);
-                return response.body;
+                console.log(`DO: ${JSON.stringify(response)}`);
+                response;
             },
                 (error: Response) => {
                     // TODO: handle http error

@@ -18,8 +18,9 @@ export class ProductService {
   getProducts(pageSize: number, pageNumber: number): Observable<IProduct[]> {
     return this.productsDataProvider.getListOfProducts(pageSize, pageNumber).map((products: Product[]) => {
       console.log(`${JSON.stringify(products)}`);
-      let res:  IProduct[] = [];
-      return res;
+      //let res:  IProduct[] = [];
+      //return res;
+      return products;
     });
     //return of(PRODUCTS);
   }
