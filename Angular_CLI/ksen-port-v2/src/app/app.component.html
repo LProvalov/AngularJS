@@ -1,6 +1,17 @@
 <div class="grid">
-    <app-top-line></app-top-line>
-    <app-main-navigation></app-main-navigation>
+    <div *ngIf="isPortfolioPage() == true">
+        
+        <app-top-line></app-top-line>
+        <app-main-navigation></app-main-navigation>
+    </div>
+    <div *ngIf="isPortfolioPage() == false">
+        <app-port-header></app-port-header>
+    </div>
     <router-outlet></router-outlet>
-    <app-footer></app-footer>
+    <div *ngIf="isPortfolioPage() == true">
+        <app-footer></app-footer>
+    </div>
+    <div *ngIf="isPortfolioPage() == false">
+        <app-port-footer></app-port-footer>
+    </div>
 </div>

@@ -32,6 +32,9 @@ import { CarouselItemComponent } from './components/widgets/carousel/carousel-it
 import { HttpService } from './services/network/http.service';
 import { ProductDataProviderToken } from './dataproviders/products/iproduct.dataprovider';
 import { ProductsDataProvider } from './dataproviders/products/products.dataprovider';
+import { MainPortfolioComponent } from './components/portfolio/pages/main-portfolio/main-portfolio.component';
+import { PortHeaderComponent } from './components/portfolio/widgets/port-header/port-header.component';
+import { PortFooterComponent } from './components/portfolio/widgets/port-footer/port-footer.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { ProductsDataProvider } from './dataproviders/products/products.dataprov
     FourLineListComponent,
     MediumItemComponent,
     CarouselComponent,
-    CarouselItemComponent
+    CarouselItemComponent,
+    MainPortfolioComponent,
+    PortHeaderComponent,
+    PortFooterComponent
   ],
   imports: [
     BrowserModule,

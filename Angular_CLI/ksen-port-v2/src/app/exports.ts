@@ -17,6 +17,9 @@ export { ContactsComponent } from './components/pages/contacts/contacts.componen
 export { BasketComponent } from './components/pages/basket/basket.component';
 export { AboutComponent } from './components/pages/about/about.component';
 
+//portfolio components
+export { MainPortfolioComponent } from './components/portfolio/pages/main-portfolio/main-portfolio.component';
+
 export { BasketLableComponent } from './components/widgets/basket-lable/basket-lable.component';
 export { BasketProductItemComponent } from './components/widgets/basket-product-item/basket-product-item.component';
 export { BasketProductListComponent } from './components/widgets/basket-product-list/basket-product-list.component';

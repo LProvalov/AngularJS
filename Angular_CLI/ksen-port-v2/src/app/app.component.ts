@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PageRoutingService } from './services/page-routing.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  constructor(
-  ) { }
+  
+  constructor(private pageRoutingService: PageRoutingService) { 
+    
+  }
+
+  isPortfolioPage(): boolean {
+    return this.pageRoutingService.isPortfolioPage();
+  }
 }
