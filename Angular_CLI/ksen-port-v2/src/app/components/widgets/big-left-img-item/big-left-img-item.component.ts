@@ -29,11 +29,11 @@ export class BigLeftImgItemComponent implements OnInit {
   }
 
   onBasketClick() {
-    this.basketService.insertInBasket(this.product.id);
+    this.basketService.insertInBasket(this.product._id);
   }
 
   isInBasket(): boolean {
-    if (this.product) return this.basketService.isInBasketList(this.product.id);
+    if (this.product) return this.basketService.isInBasketList(this.product._id);
     return false;
   }
 

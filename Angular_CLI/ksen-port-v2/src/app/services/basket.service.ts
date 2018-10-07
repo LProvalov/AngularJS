@@ -20,12 +20,12 @@ export class BasketService {
 
   }
 
-  insertInBasket(productId: number) {
+  insertInBasket(productId: string) {
     this.productService.getProduct(productId).subscribe(
       product => {
         if (product != null) {
           var basketProduct: BasketProduct = _.find(this.productsInBasket, (item: BasketProduct) => {
-            return item.productId == product.id;
+            return item.productId == product._id;
           });
           if (basketProduct != null) {
             this.increaseProductInBasket(basketProduct.productId);
@@ -38,7 +38,7 @@ export class BasketService {
     );
   }
 
-  increaseProductInBasket(productId: number) {
+  increaseProductInBasket(productId: string) {
     var basketProduct: BasketProduct = _.find(this.productsInBasket, (item: BasketProduct) => {
       return item.productId == productId;
     });
@@ -47,7 +47,7 @@ export class BasketService {
     }
   }
 
-  decreaseProductInBasket(productId: number) {
+  decreaseProductInBasket(productId: string) {
     var basketProduct: BasketProduct = _.find(this.productsInBasket, (item: BasketProduct) => {
       return item.productId == productId;
     });
@@ -56,12 +56,12 @@ export class BasketService {
     }
   }
 
-  removeFromBasket(productId: number) {
+  removeFromBasket(productId: string) {
     this.productService.getProduct(productId).subscribe(
       product => {
         if (product != null) {
           _.remove(this.productsInBasket, (item: BasketProduct) => {
-            return item.productId == product.id;
+            return item.productId == product._id;
           });
         }
       }
@@ -80,7 +80,7 @@ export class BasketService {
     return total;
   }
 
-  isInBasketList(productId: number): boolean {
+  isInBasketList(productId: string): boolean {
     var product = _.find(this.productsInBasket, (item: BasketProduct) => {
       return item.productId == productId;
     });

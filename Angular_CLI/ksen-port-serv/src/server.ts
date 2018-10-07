@@ -12,8 +12,13 @@ import { BaseSocketServer } from "./socket/socket";
 import * as Config from 'config';
 import { ProductModel, ProductRepository } from "./models/product";
 import { OrderModel, OrderRepository } from "./models/order";
+import { GroupModel, GroupRepository } from "./models/group";
 
 var appConfig: any = Config.get('Application');
+
+const ALLOWED_ORIGINS = [
+    'http://localhost:4200'
+];
 
 export class Server {
     public app: express.Application;
@@ -41,8 +46,11 @@ export class Server {
         this.app.use(express.static(appConfig.pathToPublic));
         this.app.use("/dummy/", express.static(appConfig.pathToPublic))
 
-        this.app.use(function (req, res, next) {
-            //res.header("Access-Control-Allow-Origin", "*");
+        this.app.use((req: express.Request, res, next) => {
+            if (ALLOWED_ORIGINS.indexOf(req.headers.origin as string) > -1) {
+                res.setHeader('Access-Control-Allow-Credentials', 'true');
+                res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+            }
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
             res.header("Access-Control-Allow-Methods", "GET, POST, PUT, HEAD, DELETE, OPTIONS");
             next();
@@ -63,6 +71,7 @@ export class Server {
         mongoose.connection.on('connected', () => {
             ProductModel.initialize(new ProductRepository());
             OrderModel.initialize(new OrderRepository());
+            GroupModel.initialize(new GroupRepository());
         });
     }
 

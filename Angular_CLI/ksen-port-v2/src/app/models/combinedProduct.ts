@@ -11,7 +11,7 @@ export class CombinedProduct extends Product {
     //    this.labelText = labelText;
     //}    
 
-    constructor(id: number, title: string, desc: string, price: number, compDesc: string[], productsIds: number[] )
+    constructor(id: string, title: string, desc: string, price: number, compDesc: string[], productsIds: number[] )
     {
         super(id, title, desc, price);
         this.compositionDescription = compDesc;

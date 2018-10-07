@@ -14,7 +14,7 @@ export class BasketProductItemComponent implements OnInit {
   public price: string;
 
   @Input() count: number;
-  @Input() id: number;
+  @Input() id: string;
 
   constructor(
     private productService: ProductService,
@@ -29,11 +29,11 @@ export class BasketProductItemComponent implements OnInit {
     });
   }
 
-  onIncrease(productId: number): void {
+  onIncrease(productId: string): void {
     this.basketService.increaseProductInBasket(productId);
   }
 
-  onDescrease(productId: number): void {
+  onDescrease(productId: string): void {
     this.basketService.decreaseProductInBasket(productId);
   }
 

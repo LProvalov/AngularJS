@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptionsArgs } from '@angular/http';
+import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
@@ -7,9 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HttpService {
 
   constructor(
@@ -19,9 +17,12 @@ export class HttpService {
   get(url: string, args?: RequestOptionsArgs): Observable<any> {
     if (_.isNil(args)) args = {};
 
-    return this._http.get(url, args);
-      //.map((res: Response) => this.json(res))
-      //.catch();
+    return this._http.get(url, args).map((res: Response) => {
+      console.log(`get response: ${JSON.stringify(res)}`);
+      return this.processResponse(res);
+    });
+    //.map((res: Response) => this.json(res))
+    //.catch();
   }
 
   post(url: string, data: any, args?: RequestOptionsArgs): Observable<any> {
@@ -35,6 +36,13 @@ export class HttpService {
     if (_.isNil(args)) args = {};
 
     return this._http.delete(url, args);
+  }
+
+  private processResponse(res: Response): { headers?: Headers, body?: any } {
+    return {
+      body: this.json(res),
+      headers: res.headers
+    }
   }
 
   private json(res: Response): any {

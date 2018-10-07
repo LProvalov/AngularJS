@@ -1,7 +1,7 @@
+import { ProductService } from './../../../exports';
+
 import { Component, OnInit } from '@angular/core';
 import { CombinedProduct, Product, IProduct, CarouselModel } from './../../../models/models';
-
-import { ProductService } from './../../../exports';
 
 import * as _ from 'lodash';
 import { ProductGroup } from './../../../models/productGroup';
@@ -42,15 +42,16 @@ export class MainComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.productService.getProduct(11).subscribe(item => {
-      if(item != null) {
+    this.productService.getProduct("").subscribe(item => {
+      if (item != null) {
         this.mainProduct = item as CombinedProduct;
       } else {
         this.mainProduct = null;
       }
     });
 
-    this.productService.getProducts().subscribe(products => {
+    this.productService.getProducts(10, 1).subscribe(products => {
+      console.log(`Products: ${JSON.stringify(products)}`);
       this.products = products;
     });
 

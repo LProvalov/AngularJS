@@ -1,5 +1,6 @@
 #Ignore everything
 Keys
+UploadFolder
 
 # Except this
 !.gitignore
