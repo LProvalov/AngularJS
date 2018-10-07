@@ -6,7 +6,7 @@ import * as mongoose from "mongoose";
 import errorHandler = require("errorhandler");
 
 import { IndexRoute } from "./routes";
-import { PictureApi, ProductApi } from "./api/apiAll";
+import { PictureApi, ProductApi, UsersApi } from "./api/apiAll";
 import { BaseSocketServer } from "./socket/socket";
 
 import * as Config from 'config';
@@ -80,6 +80,7 @@ export class Server {
     private api() {
         PictureApi.create(this.app);
         ProductApi.create(this.app);
+        UsersApi.create(this.app);
     }
 
     private sockets(): void {

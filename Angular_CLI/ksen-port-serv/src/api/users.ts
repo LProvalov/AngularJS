@@ -15,6 +15,10 @@ export class UsersApi extends ApiBase {
         app.get(ApiBase.apiUrl + '/users/find', (req: Request, res: Response) => {
             new UsersApi().findUser(req, res);
         });
+
+        app.post(ApiBase.apiUrl + '/users/authenticate', (req: Request, res: Response) => {
+            new UsersApi().authenticate(req, res);
+        });
     }
 
     constructor(){
@@ -60,6 +64,18 @@ export class UsersApi extends ApiBase {
                 res.json({ user });
             } else {
                 res.send("can't find this user");
+            }
+        });
+    }
+
+    protected authenticate(req: Request, res: Response) {
+        let username: string = req.body.username;
+        let password: string = req.body.password;
+        UserModel.findUser(username).then( user => {
+            if (user.password == password) {
+                res.json({user : {token: "some token"}});
+            } else {
+                res.send("error");
             }
         });
     }
