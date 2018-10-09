@@ -1,3 +1,4 @@
 data/db/
 bin/
 node_modules/
+config/
