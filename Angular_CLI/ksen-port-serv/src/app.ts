@@ -14,7 +14,6 @@ class App {
 
     public main() {
         this.server.listen();
-
     }
 
     protected normalizePort(val: string): number {

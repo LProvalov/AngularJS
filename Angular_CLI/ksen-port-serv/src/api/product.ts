@@ -16,15 +16,15 @@ export class ProductApi extends ApiBase {
 
     public static create(app: Application) {
         // GET: apibase/products?pageSize={5}&pageNumber={1}
-        app.get(ApiBase.apiUrl + '/products', (req: Request, res: Response) => {
+        app.get(ApiBase.apiUrlProtected + '/products', (req: Request, res: Response) => {
             new ProductApi().products(req, res);
         });
         // GETL apibase/product/{id}
-        app.get(ApiBase.apiUrl + '/product/:id', (req: Request, res: Response) => {
+        app.get(ApiBase.apiUrlProtected + '/product/:id', (req: Request, res: Response) => {
             new ProductApi().product(req, res);
         });
         // GET apibase/product
-        app.get(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
+        app.get(`${ApiBase.apiUrlProtected}/picture`, (req: Request, res: Response) => {
             new ProductApi().product(req, res, true);
         });
     }

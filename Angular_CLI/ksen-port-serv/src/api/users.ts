@@ -1,6 +1,6 @@
 import { Application, Request, Response } from "express";
 import { ApiBase } from "./apiBase";
-import { UserModel } from "../models/user";
+import { IUserModel, UserModel } from "../models/models";
 
 export class UsersApi extends ApiBase {
     public static create(app: Application){
@@ -19,6 +19,10 @@ export class UsersApi extends ApiBase {
         app.post(ApiBase.apiUrl + '/users/authenticate', (req: Request, res: Response) => {
             new UsersApi().authenticate(req, res);
         });
+
+        app.post(ApiBase.apiUrl + '/users/register', (req: Request, res: Response) => {
+            new UsersApi().register(req, res);
+        });
     }
 
     constructor(){
@@ -27,7 +31,7 @@ export class UsersApi extends ApiBase {
 
     protected getUsersList(req: Request, res: Response){
         console.log('getUsersList request');
-        UserModel.getAllUsers().then(
+        UserModel.getAll().then(
             (users) => {
                 res.json(users);
             },
@@ -46,7 +50,12 @@ export class UsersApi extends ApiBase {
             res.send("User can't be created.");
             return;
         }
-        UserModel.createUser(username, password).then(
+        let user: IUserModel = <IUserModel> {
+            name: username,
+            password: password,
+            createdAt: new Date()
+        }
+        UserModel.create(user).then(
             (user) => {
                 res.send("User created successfully");
             }, 
@@ -72,10 +81,23 @@ export class UsersApi extends ApiBase {
         let username: string = req.body.username;
         let password: string = req.body.password;
         UserModel.findUser(username).then( user => {
-            if (user.password == password) {
+            if (user != null && user.password == password) {
                 res.json({user : {token: "some token"}});
             } else {
-                res.send("error");
+                res.send(`Error: can't find user with username: ${username}`);
+            }
+        });
+    }
+
+    protected register(req: Request, res: Response) {
+        let username: string = req.body.username;
+        let password: string = req.body.password;
+        UserModel.findUser(username).then( user => {
+            if (user == null) {
+                UserModel.create( <IUserModel>{ name: username, password: password, createdAt: new Date() });
+                res.json({ user: {token: "some token"}});
+            } else {
+                res.send("Error: user already exist");
             }
         });
     }

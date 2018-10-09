@@ -10,9 +10,11 @@ import { PictureApi, ProductApi, UsersApi } from "./api/apiAll";
 import { BaseSocketServer } from "./socket/socket";
 
 import * as Config from 'config';
-import { ProductModel, ProductRepository } from "./models/product";
-import { OrderModel, OrderRepository } from "./models/order";
-import { GroupModel, GroupRepository } from "./models/group";
+import { ProductModel, ProductRepository, OrderModel, OrderRepository, 
+    GroupModel, GroupRepository, UserModel, UserRepository } from "./models/models";
+
+import { ApiBase } from './api/apiBase';
+import { Auth } from './middleware/auth-token';
 
 var appConfig: any = Config.get('Application');
 
@@ -56,6 +58,9 @@ export class Server {
             next();
         });
 
+        
+        //this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => AUTH(req, res, next));
+
         this.app.use(bodyParse.json());
         this.app.use(bodyParse.urlencoded({ extended: true }));
 
@@ -72,6 +77,7 @@ export class Server {
             ProductModel.initialize(new ProductRepository());
             OrderModel.initialize(new OrderRepository());
             GroupModel.initialize(new GroupRepository());
+            UserModel.initialize(new UserRepository());
         });
     }
 
@@ -87,6 +93,9 @@ export class Server {
     }
 
     private api() {
+        this.app.use(`${ApiBase.ApiUrlPr()}`, (req: express.Request, res, next) => {
+            Auth(req, res, next);
+        });
         PictureApi.create(this.app);
         ProductApi.create(this.app);
         UsersApi.create(this.app);

@@ -5,7 +5,7 @@ import { service as ProductService } from "../services/productService";
 
 export class OrderApi extends ApiBase {
     public static create(app: Application) {
-        app.post(ApiBase.apiUrl + '/order', (req: Request, res: Response) => {
+        app.post(ApiBase.apiUrlProtected + '/order', (req: Request, res: Response) => {
             new OrderApi().orderPost(req, res);
         });
     }

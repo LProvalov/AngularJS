@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import { RepositoryBase } from '../providers/repositoryBase';
+import { BaseModel } from './baseModel';
 
 var Schema = mongoose.Schema;
 
@@ -45,10 +46,10 @@ export class UserRepository extends RepositoryBase<IUserModel> {
 }
 Object.seal(UserRepository);
 
-export class UserModel {
-    private _document: IUserModel;
+export class UserModelClass extends BaseModel<IUserModel> {
+    //private _document: IUserModel;
 
-    static findUser(name: string) : Promise<IUserModel>{
+    public findUser(name: string) : Promise<IUserModel>{
         return new Promise<IUserModel>((resolve, reject) => {
             let repo = new UserRepository();
             repo.find({name: name}).exec((err, res) => {
@@ -88,21 +89,10 @@ export class UserModel {
         });
     }
 
-    constructor(userModel: IUserModel){
-        this._document = userModel;
-    }
-
-    get name(): string{
-        return this._document.name;
-    }
-
-    get password(): string{
-        return this._document.password;
-    }
-
-    get createdAt(): Date{
-        return this._document.createdAt;
+    constructor(){
+        super();
     }
 }
 
-Object.seal(UserModel);
+Object.seal(UserModelClass);
+export const UserModel: UserModelClass = new UserModelClass();

@@ -15,28 +15,28 @@ export class PictureApi extends ApiBase {
 
     public static create(app: Application) {
         // GET: apibase/picture?id={id}
-        app.get(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
+        app.get(`${ApiBase.apiUrlProtected}/picture`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res, true);
         });
 
         // GET: apibase/picture/{id}
-        app.get(`${ApiBase.apiUrl}/picture/:id`, (req: Request, res: Response) => {
+        app.get(`${ApiBase.apiUrlProtected}/picture/:id`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res);
         });
 
         // GET: apibase/pictures?pageSize={5}&pageNumber={1}
-        app.get(`${ApiBase.apiUrl}/pictures`, (req: Request, res: Response) => {
+        app.get(`${ApiBase.apiUrlProtected}/pictures`, (req: Request, res: Response) => {
             new PictureApi().pictures(req, res);
         });
 
         // POST: apibase/picture/ ...
         // multipart request
-        app.post(`${ApiBase.apiUrl}/picture`, (req: Request, res: Response) => {
+        app.post(`${ApiBase.apiUrlProtected}/picture`, (req: Request, res: Response) => {
             new PictureApi().picturePost(req, res);
         });
 
         // DELETE: apibase/picture/{id}
-        app.delete(`${ApiBase.apiUrl}/picture/:id`, (req: Request, res: Response) => {
+        app.delete(`${ApiBase.apiUrlProtected}/picture/:id`, (req: Request, res: Response) => {
             new PictureApi().deletePicture(req, res);
         });
     }
