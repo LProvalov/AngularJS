@@ -51,4 +51,4 @@ class PictureService {
     }
 }
 
-export const service: PictureService = new PictureService();
+export const pictureService: PictureService = new PictureService();

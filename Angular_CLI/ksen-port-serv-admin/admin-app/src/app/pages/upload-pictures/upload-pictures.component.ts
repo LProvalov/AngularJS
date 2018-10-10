@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploadService } from './../../services/services';
 
 @Component({
   selector: 'app-upload-pictures',
@@ -7,30 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadPicturesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private upload: FileUploadService) { }
 
   ngOnInit() {
   }
 
-  submitHandler(){
-    let imageInput: any = document.getElementById("image-input");
-    
-    let sendingFile = imageInput.files[0];
-    let sendingData = {
-        'title': document.getElementById("image-title").nodeValue,
-        'description': document.getElementById("image-description").nodeValue
-    };
-    console.log(JSON.stringify(sendingData));
-    console.log(sendingFile);
+  selectedFile: File;
+  title: string;
+  description: string;
 
-    if(sendingFile !== undefined){
-        let formData = new FormData();
-        formData.append("metainfo", JSON.stringify(sendingData));
-        formData.append("file", sendingFile);
+  onFileChanged(event) {
+    const file = event.target.files[0]
+  }
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:3000/api/picture");
-        xhr.send(formData);
-    }
+  submitHandler() {
+    const uploadData = new FormData();
+    let formData = new FormData();
+    let metainfo = { title: this.title};
+    formData.append("metainfo", JSON.stringify(metainfo));
+    formData.append("file", this.selectedFile);
+    this.upload.uploadImage(formData).subscribe( event => {
+      console.log(event);
+    });
   }
 }

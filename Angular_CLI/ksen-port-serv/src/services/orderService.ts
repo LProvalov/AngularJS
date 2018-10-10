@@ -1,5 +1,5 @@
 import { IOrder, OrderModel } from '../models/order';
-import { service as ProductService } from './productService';
+import { productService as ProductService } from './services';
 import { resolve } from 'url';
 
 export interface IProductRemnants {
@@ -59,4 +59,4 @@ class OrderService {
     }
 }
 
-export const service: OrderService = new OrderService;
+export const orderService: OrderService = new OrderService;

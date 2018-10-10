@@ -36,4 +36,4 @@ class ProductService {
     }
 }
 
-export const service: ProductService = new ProductService();
+export const productService: ProductService = new ProductService();

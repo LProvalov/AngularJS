@@ -57,7 +57,6 @@ export class Server {
             res.header("Access-Control-Allow-Methods", "GET, POST, PUT, HEAD, DELETE, OPTIONS");
             next();
         });
-
         
         //this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => AUTH(req, res, next));
 

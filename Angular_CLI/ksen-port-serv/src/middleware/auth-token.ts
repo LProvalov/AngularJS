@@ -1,18 +1,18 @@
 import * as Express from 'express';
 import * as _ from 'lodash';
 
-import * as jwtService from './../services/jwtService';
+import { jwtService, TokenPayload } from './../services/services';
 import { ApiBase } from "./../api/apiBase";
 
 declare module 'express' {
     interface Request {
-        tokenPayload: jwtService.TokenPayload;
+        tokenPayload: TokenPayload;
     }
 }
 
 const BEARER_PREFIX = 'Bearer ';
 
-async function verifyAuthorizationHeader(req: Express.Request): Promise<jwtService.TokenPayload> {
+async function verifyAuthorizationHeader(req: Express.Request): Promise<TokenPayload> {
     const authHeader = req.get('Authorization');
     if (!_.startsWith(authHeader, BEARER_PREFIX)) {
         throw new Error("Token should be prefixed with auth type");
@@ -25,7 +25,7 @@ async function verifyAuthorizationHeader(req: Express.Request): Promise<jwtServi
     });
 }
 
-async function verifyAuthenticationId(tokenPayload: jwtService.TokenPayload): Promise<void> {
+async function verifyAuthenticationId(tokenPayload: TokenPayload): Promise<void> {
     /*
     const authId = await UserService.getUserAuthenticationId(tokenPayload.username)
 

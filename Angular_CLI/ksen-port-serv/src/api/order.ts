@@ -1,7 +1,7 @@
 import { Application, Request, Response } from "express";
 import { ApiBase } from "./apiBase";
 import { PaginationValidator, IdValidator } from "./validators/commonValidator";
-import { service as ProductService } from "../services/productService";
+import { productService as ProductService } from "../services/services";
 
 export class OrderApi extends ApiBase {
     public static create(app: Application) {

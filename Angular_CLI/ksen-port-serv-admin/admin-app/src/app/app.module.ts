@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { RouterModule, Routes } from '@angular/router';
+//import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
@@ -14,8 +15,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { AlertService } from './services/alert.service';
 import { AuthenticationService } from './services/authentication.service';
-import { FormBuilder } from '../../node_modules/@angular/forms';
+//import { FormBuilder } from '../../node_modules/@angular/forms';
 import { UploadPicturesComponent } from './pages/upload-pictures/upload-pictures.component';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { UploadPicturesComponent } from './pages/upload-pictures/upload-pictures
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpModule,
     routing
   ],
   providers: [
     AuthGuard,
     AlertService,
-    AuthenticationService
+    AuthenticationService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

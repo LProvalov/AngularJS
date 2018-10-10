@@ -1,9 +1,11 @@
 import { Application, Request, Response } from "express";
 import { ApiBase } from "./apiBase";
 import { IUserModel, UserModel } from "../models/models";
+import { jwtService, TokenPayload } from "./../services/services"
 
 export class UsersApi extends ApiBase {
     public static create(app: Application){
+        /*
         app.get(ApiBase.apiUrl + '/users/list', (req: Request, res: Response) => {
             new UsersApi().getUsersList(req, res);
         });
@@ -15,7 +17,7 @@ export class UsersApi extends ApiBase {
         app.get(ApiBase.apiUrl + '/users/find', (req: Request, res: Response) => {
             new UsersApi().findUser(req, res);
         });
-
+        */
         app.post(ApiBase.apiUrl + '/users/authenticate', (req: Request, res: Response) => {
             new UsersApi().authenticate(req, res);
         });
@@ -82,7 +84,14 @@ export class UsersApi extends ApiBase {
         let password: string = req.body.password;
         UserModel.findUser(username).then( user => {
             if (user != null && user.password == password) {
-                res.json({user : {token: "some token"}});
+                let token: TokenPayload = { username: username };
+                jwtService.createToken(token)
+                    .then( (token: string) => { 
+                        res.json({token: token});
+                    },
+                    (err) => {
+                        throw new Error(err);
+                    });
             } else {
                 res.send(`Error: can't find user with username: ${username}`);
             }
