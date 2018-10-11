@@ -18,7 +18,8 @@ export class UsersApi extends ApiBase {
             new UsersApi().findUser(req, res);
         });
         */
-        app.post(ApiBase.apiUrl + '/users/authenticate', (req: Request, res: Response) => {
+        let url = ApiBase.apiUrl + '/users/authenticate';
+        app.post(url, (req: Request, res: Response) => {
             new UsersApi().authenticate(req, res);
         });
 
@@ -87,7 +88,10 @@ export class UsersApi extends ApiBase {
                 let token: TokenPayload = { username: username };
                 jwtService.createToken(token)
                     .then( (token: string) => { 
-                        res.json({token: token});
+                        res.json({
+                            username: username,
+                            token: token
+                        });
                     },
                     (err) => {
                         throw new Error(err);

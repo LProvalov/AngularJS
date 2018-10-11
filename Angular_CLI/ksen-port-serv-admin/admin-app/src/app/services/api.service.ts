@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Http, Headers, RequestOptionsArgs } from '@angular/http';
+import { Http, Headers, RequestOptionsArgs, RequestMethod } from '@angular/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,17 +8,27 @@ import { Observable, of } from 'rxjs';
 })
 export class ApiService {
 
+  private hostUrl: string = "http://localhost:8100/";
+
   constructor(
     private httpClient: HttpClient,
     private http: Http
   ) { }
 
   public login(username: string, password: string): Observable<any> {
+    /*
     return of({
       username: "vasia",
       token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFAZ21haWwuY29tIiwiaWF0IjoxNTM5MTY4MjIwLCJleHAiOjE1MzkxNzE4MjB9.LALnwMdNhv1jiRnNtePIlUObVidEl7Wokq17CpoCUPA"
     });
-    //return this.httpClient.post<any>(`api/users/authenticate`, { username: username, password: password });
+    */
+    return this.httpClient.post<any>(`${this.hostUrl}api/users/authenticate`, { username: username, password: password });
+  }
+
+  public uploadImage(formData: FormData, options: RequestOptionsArgs): Observable<any> {
+    if (options.headers) options.headers = this.prepareHeaders(options.headers);
+    options.method = RequestMethod.Post;
+    return this.http.post(`${this.hostUrl}api/pr/picture`, formData, options);
   }
 
   get(url: string, args?: RequestOptionsArgs): Observable<any> {
@@ -98,9 +108,9 @@ export class ApiService {
     let hasAccept = headers && headers.has("Accept");
     if (!hasContentType || !hasAccept) {
       let newHeaders = new Headers(headers);
-      if (!newHeaders.has("Content-Type")) {
-        newHeaders.append("Content-Type", "application/json");
-      }
+      //if (!newHeaders.has("Content-Type")) {
+      //  newHeaders.append("Content-Type", "application/json");
+      //}
       if (!newHeaders.has("Accept")) {
         newHeaders.append("Accept", "application/json");
       }

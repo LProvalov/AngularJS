@@ -17,8 +17,9 @@ export class FileUploadService {
     if (token) {
       options.headers = new Headers();
       options.headers.append("Authorization", "Bearer " + token);
+      //options.headers.append('Content-Type', 'multipart/form-data; charset=utf-8; boundary="another cool boundary"');
     }
-    console.log(`${JSON.stringify(options.headers)}`);
-    return this.api.post('api/picture', formData);
+    //console.log(`${JSON.stringify(options.headers)}`);
+    return this.api.uploadImage(formData, options);
   }
 }

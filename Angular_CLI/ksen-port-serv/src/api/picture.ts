@@ -1,5 +1,6 @@
 import { Application, Request, Response } from "express";
 import * as Busboy from 'busboy';
+import * as multer from 'multer';
 import { ApiBase } from "./apiBase";
 import {
     PictureMetainfo, PictureGetQuery, PicturesGetQuery, PictureUpdateMetainfo,
@@ -13,7 +14,7 @@ import { IPicture } from "../models/picture";
 
 export class PictureApi extends ApiBase {
 
-    public static create(app: Application) {
+    public static create(app: Application, upload: multer.Instance) {
         // GET: apibase/picture?id={id}
         app.get(`${ApiBase.apiUrlProtected}/picture`, (req: Request, res: Response) => {
             new PictureApi().picture(req, res, true);
@@ -80,8 +81,12 @@ export class PictureApi extends ApiBase {
                 busboy.on('field', (fieldname: string, val: any, fieldnameTruncated: boolean,
                     valTruncated: boolean, encoding: string, mimetype: string) => {
                     if (fieldname != "metainfo") throw new Error("Wrong field name in request.");
-                    let metainfo: PictureMetainfo = this.queryValidation<PictureMetainfo>(JSON.parse(val), PictureMetainfoValidator);
-                    resolve(metainfo);
+                    try {
+                        let metainfo: PictureMetainfo = this.queryValidation<PictureMetainfo>(JSON.parse(val), PictureMetainfoValidator);
+                        resolve(metainfo);
+                    } catch (e) {
+                        throw new Error("Wrong multitype data format");
+                    }
                 });
             });
 

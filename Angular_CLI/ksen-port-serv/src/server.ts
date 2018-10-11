@@ -4,6 +4,7 @@ import * as http from "http";
 import * as socketIo from "socket.io";
 import * as mongoose from "mongoose";
 import errorHandler = require("errorhandler");
+import * as multer from 'multer';
 
 import { IndexRoute } from "./routes";
 import { PictureApi, ProductApi, UsersApi } from "./api/apiAll";
@@ -21,6 +22,8 @@ var appConfig: any = Config.get('Application');
 const ALLOWED_ORIGINS = [
     'http://localhost:4200'
 ];
+
+const upload = multer({ dest: `upload` });
 
 export class Server {
     public app: express.Application;
@@ -55,7 +58,11 @@ export class Server {
             }
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
             res.header("Access-Control-Allow-Methods", "GET, POST, PUT, HEAD, DELETE, OPTIONS");
-            next();
+            if (req.method != 'OPTIONS') {
+                next();
+            } else {
+                res.end();
+            }
         });
         
         //this.app.use((req: express.Request, res: express.Response, next: express.NextFunction) => AUTH(req, res, next));
@@ -85,17 +92,19 @@ export class Server {
     }
 
     private routes() {
+        /*
         let router: express.Router;
         router = express.Router();
         IndexRoute.create(router);
         this.app.use(router);
+        */
     }
 
     private api() {
         this.app.use(`${ApiBase.ApiUrlPr()}`, (req: express.Request, res, next) => {
             Auth(req, res, next);
         });
-        PictureApi.create(this.app);
+        PictureApi.create(this.app, upload);
         ProductApi.create(this.app);
         UsersApi.create(this.app);
     }

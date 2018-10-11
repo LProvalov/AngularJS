@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { IValidator } from "../utils/IValidator";
 export class ApiBase {
     protected static apiUrl: string = "/api";
-    protected static apiUrlProtected: string = "/api/pr/";
+    protected static apiUrlProtected: string = "/api/pr";
 
     constructor(){
 
