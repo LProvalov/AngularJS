@@ -5,3 +5,5 @@ UploadFolder
 # Except this
 !.gitignore
 !Angular_CLI
+
+Angular_CLI/Pic
